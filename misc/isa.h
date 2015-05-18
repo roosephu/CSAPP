@@ -80,11 +80,29 @@ instr_ptr bad_instr();
 typedef unsigned char byte_t;
 typedef int word_t;
 
+#define IS_VALID(flag) (flag & 1)
+#define GET_TAG(flag) ((flag >> 1) & 0xF)
+
+#define NUM_SET (1 << 3)
+#define NUM_BLK (1 << 2)
+#define BLK_SIZE (1 << 3)
+
+typedef struct {
+  int flag;
+  byte_t contents[BLK_SIZE];
+} cache_blk_rec;
+
+typedef struct {
+  cache_blk_rec blks[NUM_SET][NUM_BLK];
+} cache_rec, *cache_t;
+
 /* Represent a memory as an array of bytes */
 typedef struct {
   int len;
   word_t maxaddr;
   byte_t *contents;
+  byte_t *shared;
+  // cache_t cache; 
 } mem_rec, *mem_t;
 
 /* Create a memory with len bytes */
@@ -166,7 +184,7 @@ char *cc_name(cc_t c);
 
 /* **************** Status types *******************/
 
-typedef enum 
+typedef enum
  {STAT_BUB, STAT_AOK, STAT_HLT, STAT_ADR, STAT_INS, STAT_PIP } stat_t;
 
 /* Describe Status */
