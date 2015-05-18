@@ -1,0 +1,4 @@
+  .pos 0
+Main:
+  irmovl $1, %eax
+  iaddl $2, %eax
