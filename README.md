@@ -1,7 +1,7 @@
 # main ideas
 Bus is a fifo. Since the simulator runs step by step, we can perform checking before 
 
-The coherence strategy is: before any operations to MEM, ask bus for reply OK. It should also monitor the `V` messages.
+The coherence strategy is: before any operations to MEM, ask bus for reply OK. It should also monitor the `B/W` messages.
 
 ## how to monitor bus
 At the end of the transition, check the fifo.  
@@ -19,7 +19,7 @@ Reply `Y` if nothing happens.
 6. `Y`: by client, means OK.
 
 ## what bus should do
-Bus collects the information from clients and sends O so that the request one can stop monitoring.
+Bus collects the information from clients and sends `O` so that the request one can stop monitoring.
 
 ## more precise strategy
 + read:
