@@ -81,7 +81,8 @@ typedef unsigned char byte_t;
 typedef int word_t;
 
 #define IS_VALID(flag) (flag & 1)
-#define GET_TAG(flag) ((flag >> 1) & 0xF)
+#define IS_DIRTY(flag) (flag & 3)
+#define GET_TAG(flag) ((flag >> 2) & 0xF)
 
 #define NUM_SET (1 << 3)
 #define NUM_BLK (1 << 2)
