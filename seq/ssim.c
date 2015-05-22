@@ -546,7 +546,7 @@ void sim_init()
 
     /* Create memory and register files */
     initialized = 1;
-    mem = init_mem(MEM_SIZE);
+    mem = init_mem(MEM_SIZE, 0);
     reg = init_reg();
     sim_reset();
     clear_mem(mem);

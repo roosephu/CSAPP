@@ -1,16 +1,16 @@
 /* Instruction Set definition for Y86 Architecture */
 /* Revisions:
-     2009-03-11:
-             Changed RNONE to be 0xF
-             Changed J_XX and jump_t to C_XX and cond_t; take_branch to cond_holds
-             Expanded RRMOVL to include conditional moves
+   2009-03-11:
+   Changed RNONE to be 0xF
+   Changed J_XX and jump_t to C_XX and cond_t; take_branch to cond_holds
+   Expanded RRMOVL to include conditional moves
 */
 
 /**************** Registers *************************/
 
 /* REG_NONE is a special one to indicate no register */
 typedef enum { REG_EAX, REG_ECX, REG_EDX, REG_EBX,
-	             REG_ESP, REG_EBP, REG_ESI, REG_EDI, REG_NONE=0xF, REG_ERR } reg_id_t;
+               REG_ESP, REG_EBP, REG_ESI, REG_EDI, REG_NONE=0xF, REG_ERR } reg_id_t;
 
 /* Find register ID given its name */
 reg_id_t find_register(char *name);
@@ -24,8 +24,8 @@ typedef enum { R_ARG, M_ARG, I_ARG, NO_ARG } arg_t;
 
 /* Different instruction types */
 typedef enum { I_HALT, I_NOP, I_RRMOVL, I_IRMOVL, I_RMMOVL, I_MRMOVL,
-	             I_ALU, I_JMP, I_CALL, I_RET, I_PUSHL, I_POPL,
-	             I_IADDL, I_LEAVE, I_POP2 } itype_t;
+               I_ALU, I_JMP, I_CALL, I_RET, I_PUSHL, I_POPL,
+               I_IADDL, I_LEAVE, I_POP2 } itype_t;
 
 /* Different ALU operations */
 typedef enum { A_ADD, A_SUB, A_AND, A_XOR, A_NONE } alu_t;
@@ -99,7 +99,7 @@ typedef struct {
 
 typedef struct {
     byte_t *shared;
-	int fd;
+    int fd;
     // cache_t cache;
 } phy_mem_rec, *phy_mem_t;
 
@@ -108,7 +108,7 @@ typedef struct {
     int len;
     word_t maxaddr;
     byte_t *contents;
-	phy_mem_t aux;
+    phy_mem_t aux;
 } mem_rec, *mem_t;
 
 /* Create a memory with len bytes */
@@ -193,7 +193,7 @@ char *cc_name(cc_t c);
 /* **************** Status types *******************/
 
 typedef enum
- {STAT_BUB, STAT_AOK, STAT_HLT, STAT_ADR, STAT_INS, STAT_PIP } stat_t;
+    {STAT_BUB, STAT_AOK, STAT_HLT, STAT_ADR, STAT_INS, STAT_PIP } stat_t;
 
 /* Describe Status */
 char *stat_name(stat_t e);

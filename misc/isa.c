@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "isa.h"
 
 #define cerr(...) fprintf(stderr, __VA_ARGS__)
@@ -17,8 +21,7 @@ extern int gui_mode;
 struct {
     char *name;
     int id;
-} reg_table[REG_ERR+1] =
-{
+} reg_table[REG_ERR+1] = {
     {"%eax",   REG_EAX},
     {"%ecx",   REG_ECX},
     {"%edx",   REG_EDX},
@@ -59,52 +62,52 @@ char *reg_name(reg_id_t id)
 /* Is the given register ID a valid program register? */
 int reg_valid(reg_id_t id)
 {
-  return id >= 0 && id < REG_NONE && reg_table[id].id == id;
+    return id >= 0 && id < REG_NONE && reg_table[id].id == id;
 }
 
 instr_t instruction_set[] =
-{
-    {"nop",    HPACK(I_NOP, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-    {"halt",   HPACK(I_HALT, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-    {"rrmovl", HPACK(I_RRMOVL, F_NONE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    /* Conditional move instructions are variants of RRMOVL */
-    {"cmovle", HPACK(I_RRMOVL, C_LE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"cmovl", HPACK(I_RRMOVL, C_L), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"cmove", HPACK(I_RRMOVL, C_E), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"cmovne", HPACK(I_RRMOVL, C_NE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"cmovge", HPACK(I_RRMOVL, C_GE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"cmovg", HPACK(I_RRMOVL, C_G), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    /* arg1hi indicates number of bytes */
-    {"irmovl", HPACK(I_IRMOVL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
-    {"rmmovl", HPACK(I_RMMOVL, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0 },
-    {"mrmovl", HPACK(I_MRMOVL, F_NONE), 6, M_ARG, 1, 0, R_ARG, 1, 1 },
-    {"addl",   HPACK(I_ALU, A_ADD), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"subl",   HPACK(I_ALU, A_SUB), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"andl",   HPACK(I_ALU, A_AND), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    {"xorl",   HPACK(I_ALU, A_XOR), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-    /* arg1hi indicates number of bytes */
-    {"jmp",    HPACK(I_JMP, C_YES), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"jle",    HPACK(I_JMP, C_LE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"jl",     HPACK(I_JMP, C_L), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"je",     HPACK(I_JMP, C_E), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"jne",    HPACK(I_JMP, C_NE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"jge",    HPACK(I_JMP, C_GE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"jg",     HPACK(I_JMP, C_G), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"call",   HPACK(I_CALL, F_NONE),    5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-    {"ret",    HPACK(I_RET, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-    {"pushl",  HPACK(I_PUSHL, F_NONE) , 2, R_ARG, 1, 1, NO_ARG, 0, 0 },
-    {"popl",   HPACK(I_POPL, F_NONE) ,  2, R_ARG, 1, 1, NO_ARG, 0, 0 },
-    {"iaddl",  HPACK(I_IADDL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
-    {"leave",  HPACK(I_LEAVE, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-    /* this is just a hack to make the I_POP2 code have an associated name */
-    {"pop2",   HPACK(I_POP2, F_NONE) , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+    {
+        {"nop",    HPACK(I_NOP, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+        {"halt",   HPACK(I_HALT, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+        {"rrmovl", HPACK(I_RRMOVL, F_NONE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        /* Conditional move instructions are variants of RRMOVL */
+        {"cmovle", HPACK(I_RRMOVL, C_LE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"cmovl", HPACK(I_RRMOVL, C_L), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"cmove", HPACK(I_RRMOVL, C_E), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"cmovne", HPACK(I_RRMOVL, C_NE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"cmovge", HPACK(I_RRMOVL, C_GE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"cmovg", HPACK(I_RRMOVL, C_G), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        /* arg1hi indicates number of bytes */
+        {"irmovl", HPACK(I_IRMOVL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
+        {"rmmovl", HPACK(I_RMMOVL, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0 },
+        {"mrmovl", HPACK(I_MRMOVL, F_NONE), 6, M_ARG, 1, 0, R_ARG, 1, 1 },
+        {"addl",   HPACK(I_ALU, A_ADD), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"subl",   HPACK(I_ALU, A_SUB), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"andl",   HPACK(I_ALU, A_AND), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        {"xorl",   HPACK(I_ALU, A_XOR), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+        /* arg1hi indicates number of bytes */
+        {"jmp",    HPACK(I_JMP, C_YES), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"jle",    HPACK(I_JMP, C_LE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"jl",     HPACK(I_JMP, C_L), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"je",     HPACK(I_JMP, C_E), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"jne",    HPACK(I_JMP, C_NE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"jge",    HPACK(I_JMP, C_GE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"jg",     HPACK(I_JMP, C_G), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"call",   HPACK(I_CALL, F_NONE),    5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+        {"ret",    HPACK(I_RET, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+        {"pushl",  HPACK(I_PUSHL, F_NONE) , 2, R_ARG, 1, 1, NO_ARG, 0, 0 },
+        {"popl",   HPACK(I_POPL, F_NONE) ,  2, R_ARG, 1, 1, NO_ARG, 0, 0 },
+        {"iaddl",  HPACK(I_IADDL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
+        {"leave",  HPACK(I_LEAVE, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+        /* this is just a hack to make the I_POP2 code have an associated name */
+        {"pop2",   HPACK(I_POP2, F_NONE) , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 },
 
-    /* For allocation instructions, arg1hi indicates number of bytes */
-    {".byte",  0x00, 1, I_ARG, 0, 1, NO_ARG, 0, 0 },
-    {".word",  0x00, 2, I_ARG, 0, 2, NO_ARG, 0, 0 },
-    {".long",  0x00, 4, I_ARG, 0, 4, NO_ARG, 0, 0 },
-    {NULL,     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 }
-};
+        /* For allocation instructions, arg1hi indicates number of bytes */
+        {".byte",  0x00, 1, I_ARG, 0, 1, NO_ARG, 0, 0 },
+        {".word",  0x00, 2, I_ARG, 0, 2, NO_ARG, 0, 0 },
+        {".long",  0x00, 4, I_ARG, 0, 4, NO_ARG, 0, 0 },
+        {NULL,     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 }
+    };
 
 instr_t invalid_instr =
     {"XXX",     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 };
@@ -135,25 +138,29 @@ instr_ptr bad_instr()
 }
 
 phy_mem_t init_phy_mem() {
+    /* cerr("shared mem size: %d\n", SHARED_MEM_POS); */
     phy_mem_t ret = (phy_mem_t) malloc(sizeof(phy_mem_t));
-    ret->fd = open("/dev/zero", O_RDWR, 0);
-    assert(ret->fd != -1);
+    int fd = open(SHARED_FILE, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    assert(fd != -1);
 
-    ret->shared = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_ANON | MAP_SHARED | MAP_FILE, fd, 0);
+    ret->shared = mmap(NULL, SHARED_MEM_POS, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FILE, fd, 0);
     assert(ret->shared != MAP_FAILED);
+    close(fd);
+
+    cerr("test: %c\n", ret->shared[0]);
     return ret;
 }
 
 mem_t init_mem(int len, int reg)
 {
+    cerr("--- init mem --- \n");
     mem_t result = (mem_t) malloc(sizeof(mem_rec));
     len = ((len+BPL-1)/BPL)*BPL;
     result->len = len;
+    result->contents = (byte_t *) calloc(len, 1);
     if (reg == 1) {
-        result->contents = (byte_t *) calloc(len, 1);
         result->aux = NULL;
     } else {
-        result->contents = (byte_t *) calloc(len / 2, 1);
         result->aux = init_phy_mem();
     }
     return result;
@@ -168,15 +175,14 @@ void free_mem(mem_t m)
 {
     free((void *) m->contents);
     if (m->aux) {
-        munmap(m->aux->shared);
-        close(m->aux->fd);
+        munmap(m->aux->shared, SHARED_MEM_POS);
     }
     free((void *) m);
 }
 
 mem_t copy_mem(mem_t oldm)
 {
-    mem_t newm = init_mem(oldm->len, oldm.aux == NULL);
+    mem_t newm = init_mem(oldm->len, oldm->aux == NULL);
     memcpy(newm->contents, oldm->contents, oldm->len);
     return newm;
 }
@@ -325,6 +331,8 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
+    if (m->aux)
+        cerr("--- get byte val (type: %d, pos: %d) --- \n", m->aux != 0, pos);
     if (pos >= SHARED_MEM_POS) {
         assert(m->aux);
         *dest = m->aux->shared[pos - SHARED_MEM_POS];
@@ -341,9 +349,20 @@ bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
     word_t val;
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
+
+    /* cerr("--- get word val (type: %d, pos: %d) --- \n", m->aux != 0, pos); */
+    byte_t *ptr;
+    if (pos >= SHARED_MEM_POS) {
+        ptr = m->aux->shared;
+        pos -= SHARED_MEM_POS;
+    } else {
+        ptr = m->contents;
+        assert(pos + 4 <= SHARED_MEM_POS);
+    }
+
     val = 0;
     for (i = 0; i < 4; i++)
-        val = val | m->contents[pos+i]<<(8*i);
+        val = val | ptr[pos+i]<<(8*i);
     *dest = val;
     return TRUE;
 }
@@ -352,7 +371,14 @@ bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
-    m->contents[pos] = val;
+    cerr("--- set byte val (type: %d, pos: %d, val: %d) --- \n", m->aux != 0, pos, val);
+    if (pos >= SHARED_MEM_POS) {
+        assert(m->aux);
+        m->aux->shared[pos - SHARED_MEM_POS] = val;
+    } else {
+        m->contents[pos] = val;
+    }
+    /* m->contents[pos] = val; */
     return TRUE;
 }
 
@@ -361,8 +387,20 @@ bool_t set_word_val(mem_t m, word_t pos, word_t val)
     int i;
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
+    if (m->aux)
+        cerr("--- set word val (type: %d, pos: %d, val: %d) --- \n", m->aux != 0, pos, val);
+    byte_t *ptr;
+    if (pos >= SHARED_MEM_POS) {
+        cerr("--- SHARED ---\n");
+        ptr = m->aux->shared;
+        pos -= SHARED_MEM_POS;
+    } else {
+        ptr = m->contents;
+        assert(pos + 4 <= SHARED_MEM_POS);
+    }
+
     for (i = 0; i < 4; i++) {
-        m->contents[pos+i] = val & 0xFF;
+        ptr[pos+i] = val & 0xFF;
         val >>= 8;
     }
     return TRUE;
@@ -467,13 +505,13 @@ struct {
     char symbol;
     int id;
 } alu_table[A_NONE+1] =
-{
-    {'+',   A_ADD},
-    {'-',   A_SUB},
-    {'&',   A_AND},
-    {'^',   A_XOR},
-    {'?',   A_NONE}
-};
+    {
+        {'+',   A_ADD},
+        {'-',   A_SUB},
+        {'&',   A_AND},
+        {'^',   A_XOR},
+        {'?',   A_NONE}
+    };
 
 char op_name(alu_t op)
 {
@@ -514,11 +552,11 @@ cc_t compute_cc(alu_t op, word_t argA, word_t argB)
     switch(op) {
     case A_ADD:
         ovf = (((int) argA < 0) == ((int) argB < 0)) &&
-                 (((int) val < 0) != ((int) argA < 0));
+            (((int) val < 0) != ((int) argA < 0));
         break;
     case A_SUB:
         ovf = (((int) argA > 0) == ((int) argB < 0)) &&
-               (((int) val < 0) != ((int) argB < 0));
+            (((int) val < 0) != ((int) argB < 0));
         break;
     case A_AND:
     case A_XOR:
@@ -729,7 +767,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
         }
         val = get_reg_val(s->r, hi1);
         if (cond_holds(s->cc, lo0))
-          set_reg_val(s->r, lo1, val);
+            set_reg_val(s->r, lo1, val);
         s->pc = ftpc;
         break;
     case I_IRMOVL:
@@ -980,3 +1018,4 @@ stat_t step_state(state_ptr s, FILE *error_file)
     }
     return STAT_AOK;
 }
+

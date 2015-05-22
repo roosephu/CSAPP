@@ -1,0 +1,6 @@
+# Execution begins at address 0
+	.pos 0
+  irmovl $4096, %eax  
+  irmovl 0xDEADBEAF, %ebx
+  rmmovl %ebx, (%eax)
+  

@@ -1,0 +1,5 @@
+                      | # Execution begins at address 0
+  0x000:              | 	.pos 0
+  0x000: 30f000100000 |   irmovl $4096, %eax  
+  0x006: 30f3afbeadde |   irmovl 0xDEADBEAF, %ebx
+  0x00c: 403000000000 |   rmmovl %ebx, (%eax)
