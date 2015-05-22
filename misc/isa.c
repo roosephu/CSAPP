@@ -2,8 +2,11 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 #include "isa.h"
 
+#define cerr(...) fprintf(stderr, __VA_ARGS__)
+#define cfatal(...) fprintf(stder, __VA_ARGS__), assert(0);
 
 /* Are we running in GUI mode? */
 extern int gui_mode;
@@ -131,14 +134,28 @@ instr_ptr bad_instr()
     return &invalid_instr;
 }
 
+phy_mem_t init_phy_mem() {
+    phy_mem_t ret = (phy_mem_t) malloc(sizeof(phy_mem_t));
+    ret->fd = open("/dev/zero", O_RDWR, 0);
+    assert(ret->fd != -1);
 
-mem_t init_mem(int len)
+    ret->shared = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_ANON | MAP_SHARED | MAP_FILE, fd, 0);
+    assert(ret->shared != MAP_FAILED);
+    return ret;
+}
+
+mem_t init_mem(int len, int reg)
 {
-
     mem_t result = (mem_t) malloc(sizeof(mem_rec));
     len = ((len+BPL-1)/BPL)*BPL;
     result->len = len;
-    result->contents = (byte_t *) calloc(len, 1);
+    if (reg == 1) {
+        result->contents = (byte_t *) calloc(len, 1);
+        result->aux = NULL;
+    } else {
+        result->contents = (byte_t *) calloc(len / 2, 1);
+        result->aux = init_phy_mem();
+    }
     return result;
 }
 
@@ -150,12 +167,16 @@ void clear_mem(mem_t m)
 void free_mem(mem_t m)
 {
     free((void *) m->contents);
+    if (m->aux) {
+        munmap(m->aux->shared);
+        close(m->aux->fd);
+    }
     free((void *) m);
 }
 
 mem_t copy_mem(mem_t oldm)
 {
-    mem_t newm = init_mem(oldm->len);
+    mem_t newm = init_mem(oldm->len, oldm.aux == NULL);
     memcpy(newm->contents, oldm->contents, oldm->len);
     return newm;
 }
@@ -304,7 +325,12 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
-    *dest = m->contents[pos];
+    if (pos >= SHARED_MEM_POS) {
+        assert(m->aux);
+        *dest = m->aux->shared[pos - SHARED_MEM_POS];
+    } else {
+        *dest = m->contents[pos];
+    }
     // hit_cache();
     return TRUE;
 }
@@ -367,7 +393,7 @@ void dump_memory(FILE *outfile, mem_t m, word_t pos, int len)
 
 mem_t init_reg()
 {
-    return init_mem(32);
+    return init_mem(32, 1);
 }
 
 void free_reg(mem_t r)
@@ -542,7 +568,7 @@ state_ptr new_state(int memlen)
     state_ptr result = (state_ptr) malloc(sizeof(state_rec));
     result->pc = 0;
     result->r = init_reg();
-    result->m = init_mem(memlen);
+    result->m = init_mem(memlen, 0);
     result->cc = DEFAULT_CC;
     return result;
 }

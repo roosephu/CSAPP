@@ -1,16 +1,16 @@
 /* Instruction Set definition for Y86 Architecture */
 /* Revisions:
-   2009-03-11:
-       Changed RNONE to be 0xF
-       Changed J_XX and jump_t to C_XX and cond_t; take_branch to cond_holds
-       Expanded RRMOVL to include conditional moves
+     2009-03-11:
+             Changed RNONE to be 0xF
+             Changed J_XX and jump_t to C_XX and cond_t; take_branch to cond_holds
+             Expanded RRMOVL to include conditional moves
 */
 
 /**************** Registers *************************/
 
 /* REG_NONE is a special one to indicate no register */
 typedef enum { REG_EAX, REG_ECX, REG_EDX, REG_EBX,
-	       REG_ESP, REG_EBP, REG_ESI, REG_EDI, REG_NONE=0xF, REG_ERR } reg_id_t;
+	             REG_ESP, REG_EBP, REG_ESI, REG_EDI, REG_NONE=0xF, REG_ERR } reg_id_t;
 
 /* Find register ID given its name */
 reg_id_t find_register(char *name);
@@ -24,8 +24,8 @@ typedef enum { R_ARG, M_ARG, I_ARG, NO_ARG } arg_t;
 
 /* Different instruction types */
 typedef enum { I_HALT, I_NOP, I_RRMOVL, I_IRMOVL, I_RMMOVL, I_MRMOVL,
-	       I_ALU, I_JMP, I_CALL, I_RET, I_PUSHL, I_POPL,
-	       I_IADDL, I_LEAVE, I_POP2 } itype_t;
+	             I_ALU, I_JMP, I_CALL, I_RET, I_PUSHL, I_POPL,
+	             I_IADDL, I_LEAVE, I_POP2 } itype_t;
 
 /* Different ALU operations */
 typedef enum { A_ADD, A_SUB, A_AND, A_XOR, A_NONE } alu_t;
@@ -60,15 +60,15 @@ typedef enum { FALSE, TRUE } bool_t;
 
 /* Table used to encode information about instructions */
 typedef struct {
-  char *name;
-  unsigned char code; /* Byte code for instruction+op */
-  int bytes;
-  arg_t arg1;
-  int arg1pos;
-  int arg1hi;  /* 0/1 for register argument, # bytes for allocation */
-  arg_t arg2;
-  int arg2pos;
-  int arg2hi;  /* 0/1 */
+    char *name;
+    unsigned char code; /* Byte code for instruction+op */
+    int bytes;
+    arg_t arg1;
+    int arg1pos;
+    int arg1hi;    /* 0/1 for register argument, # bytes for allocation */
+    arg_t arg2;
+    int arg2pos;
+    int arg2hi;    /* 0/1 */
 } instr_t, *instr_ptr;
 
 instr_ptr find_instr(char *name);
@@ -76,37 +76,43 @@ instr_ptr find_instr(char *name);
 /* Return invalid instruction for error handling purposes */
 instr_ptr bad_instr();
 
-/***********  Implementation of Memory *****************/
+/***********    Implementation of Memory *****************/
 typedef unsigned char byte_t;
 typedef int word_t;
 
 #define IS_VALID(flag) (flag & 1)
-#define GET_TAG(flag) ((flag >> 1) & 0xF)
+#define IS_DIRTY(flag) (flag & 3)
+#define GET_TAG(flag) ((flag >> 2) & 0xF)
 
 #define NUM_SET (1 << 3)
 #define NUM_BLK (1 << 2)
 #define BLK_SIZE (1 << 3)
 
 typedef struct {
-  int flag;
-  byte_t contents[BLK_SIZE];
+    int flag;
+    byte_t contents[BLK_SIZE];
 } cache_blk_rec;
 
 typedef struct {
-  cache_blk_rec blks[NUM_SET][NUM_BLK];
+    cache_blk_rec blks[NUM_SET][NUM_BLK];
 } cache_rec, *cache_t;
+
+typedef struct {
+    byte_t *shared;
+	int fd;
+    // cache_t cache;
+} phy_mem_rec, *phy_mem_t;
 
 /* Represent a memory as an array of bytes */
 typedef struct {
-  int len;
-  word_t maxaddr;
-  byte_t *contents;
-  byte_t *shared;
-  // cache_t cache; 
+    int len;
+    word_t maxaddr;
+    byte_t *contents;
+	phy_mem_t aux;
 } mem_rec, *mem_t;
 
 /* Create a memory with len bytes */
-mem_t init_mem(int len);
+mem_t init_mem(int len, int reg);
 void free_mem(mem_t m);
 
 /* Set contents of memory to 0 */
@@ -123,10 +129,12 @@ bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile);
 #else
 #define MEM_SIZE (1<<13)
 #endif
+#define SHARED_MEM_POS (MEM_SIZE >> 1)
+#define SHARED_FILE "/tmp/y86-shm"
 
 /*** In the following functions, a return value of 1 means success ***/
 
-/* Load memory from .yo file.  Return number of bytes read */
+/* Load memory from .yo file.    Return number of bytes read */
 int load_mem(mem_t m, FILE *infile, int report_error);
 
 /* Get byte from memory */
@@ -161,7 +169,7 @@ void dump_reg(FILE *outfile, mem_t r);
 
 
 
-/* ****************  ALU Function **********************/
+/* ****************    ALU Function **********************/
 
 /* Compute ALU operation */
 word_t compute_alu(alu_t op, word_t arg1, word_t arg2);
@@ -176,7 +184,7 @@ typedef unsigned char cc_t;
 
 #define DEFAULT_CC PACK_CC(1,0,0)
 
-/* Compute condition code.  */
+/* Compute condition code.    */
 cc_t compute_cc(alu_t op, word_t arg1, word_t arg2);
 
 /* Generated printed form of condition code */
@@ -193,10 +201,10 @@ char *stat_name(stat_t e);
 /* **************** ISA level implementation *********/
 
 typedef struct {
-  word_t pc;
-  mem_t r;
-  mem_t m;
-  cc_t cc;
+    word_t pc;
+    mem_t r;
+    mem_t m;
+    cc_t cc;
 } state_rec, *state_ptr;
 
 state_ptr new_state(int memlen);
@@ -208,7 +216,7 @@ bool_t diff_state(state_ptr olds, state_ptr news, FILE *outfile);
 /* Determine if condition satisified */
 bool_t cond_holds(cc_t cc, cond_t bcond);
 
-/* Execute single instruction.  Return status. */
+/* Execute single instruction.    Return status. */
 stat_t step_state(state_ptr s, FILE *error_file);
 
 /************************ Interface Functions *************/
