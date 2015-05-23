@@ -1,5 +1,9 @@
                       | # Execution begins at address 0
   0x000:              | 	.pos 0
-  0x000: 30f000100000 |   irmovl $4096, %eax  
+  0x000: 30f064000000 |   irmovl $100, %eax
   0x006: 30f3afbeadde |   irmovl 0xDEADBEAF, %ebx
-  0x00c: 403000000000 |   rmmovl %ebx, (%eax)
+  0x00c: 30f1c8000000 |   irmovl $200, %ecx
+  0x012: 403000000000 |   rmmovl %ebx, (%eax)
+  0x018: 30f378563412 |   irmovl 0x12345678, %ebx
+  0x01e: 403004000000 |   rmmovl %ebx, 4(%eax)
+  0x024: f01004000000 |   mutex %ecx, 4(%eax)

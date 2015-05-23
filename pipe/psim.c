@@ -1,9 +1,9 @@
 /***********************************************************************
  * psim.c - Pipelined Y86 simulator
- * 
+ *
  * Copyright (c) 2010, R. Bryant and D. O'Hallaron, All rights reserved.
  * May not be used, modified, or copied without permission.
- ***********************************************************************/ 
+ ***********************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,17 +40,17 @@ extern  char simname[];
 int gui_mode = FALSE;    /* Run in GUI mode instead of TTY mode? (-g) */
 char *object_filename;   /* The input object file name. */
 FILE *object_file;       /* Input file handle */
-bool_t verbosity = 2;    /* Verbosity level [TTY only] (-v) */ 
+bool_t verbosity = 2;    /* Verbosity level [TTY only] (-v) */
 int instr_limit = 10000; /* Instruction limit [TTY only] (-l) */
 bool_t do_check = FALSE; /* Test with ISA simulator? [TTY only] (-t) */
 
-/************* 
- * End Globals 
+/*************
+ * End Globals
  *************/
 
 
 /***************************
- * Begin function prototypes 
+ * Begin function prototypes
  ***************************/
 
 static void usage(char *name);           /* Print helpful usage message */
@@ -72,7 +72,7 @@ void addAppCommands(Tcl_Interp *interp); /* Add application-dependent commands *
  * simulation.
  *******************************************************************/
 
-/* 
+/*
  * sim_main - main simulator routine. This function is called from the
  * main() routine in the HCL file.
  */
@@ -82,7 +82,7 @@ int sim_main(int argc, char **argv)
     int c;
     char *myargv[MAXARGS];
 
-    
+
     /* Parse the command line arguments */
     while ((c = getopt(argc, argv, "htgl:v:")) != -1) {
 	switch(c) {
@@ -144,7 +144,7 @@ int sim_main(int argc, char **argv)
 	exit(1);
 #endif /* HAS_GUI */
 
-	/* In GUI mode, we must specify the object file on command line */ 
+	/* In GUI mode, we must specify the object file on command line */
 	if (!object_file) {
 	    printf("Missing object file argument in GUI mode\n");
 	    usage(argv[0]);
@@ -175,10 +175,10 @@ int sim_main(int argc, char **argv)
     exit(0);
 }
 
-/* 
+/*
  * run_tty_sim - Run the simulator in TTY mode
  */
-static void run_tty_sim() 
+static void run_tty_sim()
 {
     int icount = 0;
     byte_t run_status = STAT_AOK;
@@ -220,7 +220,7 @@ static void run_tty_sim()
 
     mem0 = copy_mem(mem);
     reg0 = copy_mem(reg);
-    
+
     icount = sim_run_pipe(instr_limit, 5*instr_limit, &run_status, &result_cc);
     if (verbosity > 0) {
 	printf("%d instructions executed\n", icount);
@@ -285,7 +285,7 @@ static void usage(char *name)
     printf("Usage: %s [-htg] [-l m] [-v n] file.yo\n", name);
     printf("file.yo arg required in GUI mode, optional in TTY mode (default stdin)\n");
     printf("   -h     Print this message\n");
-    printf("   -g     Run in GUI mode instead of TTY mode (default TTY)\n");  
+    printf("   -g     Run in GUI mode instead of TTY mode (default TTY)\n");
     printf("   -l m   Set instruction limit to m [TTY mode only] (default %d)\n", instr_limit);
     printf("   -v n   Set verbosity level to 0 <= n <= 2 [TTY mode only] (default %d)\n", verbosity);
     printf("   -t     Test result against ISA simulator [TTY mode only]\n");
@@ -463,7 +463,7 @@ static char *format_mem_wb(mem_wb_ptr state)
 #endif /* HAS_GUI */
 
 /* Report system state */
-static void sim_report() 
+static void sim_report()
 {
 
 #ifdef HAS_GUI
@@ -498,7 +498,7 @@ static void sim_report()
  *****************************************************************************/
 
 /* bubble stage (has effect at next update) */
-void sim_bubble_stage(stage_id_t stage) 
+void sim_bubble_stage(stage_id_t stage)
 {
     switch (stage)
 	{
@@ -531,18 +531,18 @@ void sim_init()
     initialized = 1;
     mem = init_mem(MEM_SIZE, 0);
     reg = init_reg();
-    
+
     /* create 5 pipe registers */
     pc_state     = new_pipe(sizeof(pc_ele), (void *) &bubble_pc);
     if_id_state  = new_pipe(sizeof(if_id_ele), (void *) &bubble_if_id);
     id_ex_state  = new_pipe(sizeof(id_ex_ele), (void *) &bubble_id_ex);
     ex_mem_state = new_pipe(sizeof(ex_mem_ele), (void *) &bubble_ex_mem);
     mem_wb_state = new_pipe(sizeof(mem_wb_ele), (void *) &bubble_mem_wb);
-  
+
     /* connect them to the pipeline stages */
     pc_next   = pc_state->next;
     pc_curr   = pc_state->current;
-  
+
     if_id_next = if_id_state->next;
     if_id_curr = if_id_state->current;
 
@@ -708,7 +708,7 @@ static byte_t sim_step_pipe(int max_instr, int ccount)
 	ex_mem_curr->status = STAT_PIP;
     if (mem_wb_state->op == P_ERROR)
 	mem_wb_curr->status = STAT_PIP;
-    
+
     /* Need to do decode after execute & memory stages,
        and memory stage before execute, in order to propagate
        forwarding values properly */
@@ -736,7 +736,7 @@ static byte_t sim_step_pipe(int max_instr, int ccount)
 	if (!starting_up)
 	    cycles++;
     }
-    
+
     sim_report();
     return status;
 }
@@ -798,7 +798,7 @@ void sim_log( const char *format, ... ) {
 #ifdef HAS_GUI
 
 /**********************
- * Begin Part 3 globals	
+ * Begin Part 3 globals
  **********************/
 
 /* Hack for SunOS */
@@ -813,7 +813,7 @@ static Tcl_Interp *sim_interp = NULL;
 static mem_t post_load_mem;
 
 /**********************
- * End Part 3 globals	
+ * End Part 3 globals
  **********************/
 
 
@@ -977,7 +977,7 @@ void addAppCommands(Tcl_Interp *interp)
 		      (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL);
     Tcl_CreateCommand(interp, "setSimMode", (Tcl_CmdProc *) simModeCmd,
 		      (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL);
-} 
+}
 
 /******************************************************************************
  *	tcl functionality called from within C
@@ -1120,7 +1120,7 @@ void signal_register_clear() {
     }
 }
 
-/* Provide mechanism for simulator to report instructions as they are 
+/* Provide mechanism for simulator to report instructions as they are
    read in
 */
 
@@ -1180,7 +1180,7 @@ void report_pc(unsigned fpc, unsigned char fpcv,
 	    wpcv ? "W" : "");
     Tcl_DStringAppend(&cmd, code, -1);
     Tcl_DStringEndSublist(&cmd);
-    /* Debug 
+    /* Debug
        fprintf(stderr, "Code '%s'\n", Tcl_DStringValue(&cmd));
     */
     status = Tcl_Eval(sim_interp, Tcl_DStringValue(&cmd));
@@ -1270,7 +1270,7 @@ pipe_ptr new_pipe(int count, void *bubble_val)
   result->count = count;
   result->op = P_LOAD;
   result->bubble_val = bubble_val;
-  pipes[pipe_count++] = result; 
+  pipes[pipe_count++] = result;
   return result;
 }
 
@@ -1286,7 +1286,7 @@ void update_pipes()
       	/* insert a bubble into the next stage */
       	memcpy(p->current, p->bubble_val, p->count);
       	break;
-      
+
       case P_LOAD:
       	/* copy calculated state from previous stage */
       	memcpy(p->current, p->next, p->count);
@@ -1410,7 +1410,7 @@ void do_if_stage()
     }
 
     instr_valid = gen_instr_valid();
-    if (!instr_valid) 
+    if (!instr_valid)
       sim_log("\tFetch: Instruction code 0x%x invalid\n", instr);
     if_id_next->status = gen_f_stat();
 
@@ -1497,7 +1497,7 @@ void do_ex_stage()
     alub = gen_aluB();
 
     e_bcond = 	cond_holds(cc, id_ex_curr->ifun);
-    
+
     ex_mem_next->takebranch = e_bcond;
 
     if (id_ex_curr->icode == I_JMP)
@@ -1505,7 +1505,7 @@ void do_ex_stage()
 	      iname(HPACK(id_ex_curr->icode, id_ex_curr->ifun)),
 	      cc_name(cc),
 	      ex_mem_next->takebranch ? "" : "not ");
-    
+
     /* Perform the ALU operation */
     word_t aluout = compute_alu(alufun, alua, alub);
     ex_mem_next->vale = aluout;
@@ -1583,7 +1583,7 @@ p_stat_t pipe_cntl(char *name, int stall, int bubble)
 	    sim_log("%s: Conflicting control signals for pipe register\n",
 		    name);
 	    return P_ERROR;
-	} else 
+	} else
 	    return P_STALL;
     } else {
 	return bubble ? P_BUBBLE : P_LOAD;
@@ -1598,6 +1598,3 @@ void do_stall_check()
     ex_mem_state->op = pipe_cntl("MEM", gen_M_stall(), gen_M_bubble());
     mem_wb_state->op = pipe_cntl("WB", gen_W_stall(), gen_W_bubble());
 }
-
-
-

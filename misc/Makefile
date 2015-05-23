@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -O2
+CFLAGS=-Wall -ggdb
 LCFLAGS=-O2
 LEX = flex
 YACC=bison
@@ -53,7 +53,5 @@ hcl.tab.c: hcl.y
 	$(YACC) -d hcl.y
 
 clean:
-	rm -f *.o *.yo *.exe yis yas hcl2c mux4 *~ core.* 
+	rm -f *.o *.yo *.exe yis yas hcl2c mux4 *~ core.*
 	rm -f hcl.tab.c hcl.tab.h lex.yy.c
-
-

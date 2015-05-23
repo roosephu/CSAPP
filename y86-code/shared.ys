@@ -1,6 +1,9 @@
 # Execution begins at address 0
 	.pos 0
-  irmovl $4096, %eax  
+  irmovl $100, %eax
   irmovl 0xDEADBEAF, %ebx
+  irmovl $200, %ecx
   rmmovl %ebx, (%eax)
-  
+  irmovl 0x12345678, %ebx
+  rmmovl %ebx, 4(%eax)
+  mutex %ecx, 4(%eax)
