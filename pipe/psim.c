@@ -602,9 +602,11 @@ static void update_state(bool_t update_mem, bool_t update_cc)
     */
 
     if (wb_destE != REG_NONE) {
-	sim_log("\tWriteback: Wrote 0x%x to register %s\n",
-		wb_valE, reg_name(wb_destE));
-	set_reg_val(reg, wb_destE, wb_valE);
+	    sim_log("\tWriteback: Wrote 0x%x to register %s\n",
+		    wb_valE, reg_name(wb_destE));
+        if (update_mem && mem_write)
+            get_word_val(mem, mem_addr, &wb_valE);
+        set_reg_val(reg, wb_destE, wb_valE);
     }
     if (wb_destM != REG_NONE) {
 	sim_log("\tWriteback: Wrote 0x%x to register %s\n",
@@ -758,16 +760,16 @@ int sim_run_pipe(int max_instr, int max_cycle, byte_t *statusp, cc_t *ccp)
     byte_t run_status = STAT_AOK;
     while (icount < max_instr && ccount < max_cycle) {
         run_status = sim_step_pipe(max_instr-icount, ccount);
-	if (run_status != STAT_BUB)
-	    icount++;
-	if (run_status != STAT_AOK && run_status != STAT_BUB)
-	    break;
-	ccount++;
+	    if (run_status != STAT_BUB)
+	        icount++;
+        if (run_status != STAT_AOK && run_status != STAT_BUB)
+	        break;
+        ccount++;
     }
     if (statusp)
-	*statusp = run_status;
+	    *statusp = run_status;
     if (ccp)
-	*ccp = cc;
+	   *ccp = cc;
     return icount;
 }
 

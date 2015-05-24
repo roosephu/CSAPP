@@ -25,7 +25,7 @@ typedef enum { R_ARG, M_ARG, I_ARG, NO_ARG } arg_t;
 /* Different instruction types */
 typedef enum { I_HALT, I_NOP, I_RRMOVL, I_IRMOVL, I_RMMOVL, I_MRMOVL,
                I_ALU, I_JMP, I_CALL, I_RET, I_PUSHL, I_POPL,
-               I_IADDL, I_LEAVE, I_POP2, I_MUTEX } itype_t;
+               I_IADDL, I_LEAVE, I_POP2, I_RMSWAP } itype_t;
 
 /* Different ALU operations */
 typedef enum { A_ADD, A_SUB, A_AND, A_XOR, A_NONE } alu_t;
@@ -38,6 +38,8 @@ char op_name(alu_t op);
 
 /* Different Jump conditions */
 typedef enum { C_YES, C_LE, C_L, C_E, C_NE, C_GE, C_G } cond_t;
+
+typedef enum { READ_HIT, READ_MISS, WRITE_HIT, WRITE_MISS } cache_res_t;
 
 /* Pack itype and function into single byte */
 #define HPACK(hi,lo) ((((hi)&0xF)<<4)|((lo)&0xF))
@@ -100,7 +102,7 @@ typedef struct {
 typedef struct {
     byte_t *shared;
     int fd;
-    // cache_t cache;
+    cache_t cache;
 } phy_mem_rec, *phy_mem_t;
 
 /* Represent a memory as an array of bytes */
@@ -129,9 +131,11 @@ bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile);
 #else
 #define MEM_SIZE (1<<13)
 #endif
-#define SHARED_MEM_POS (MEM_SIZE >> 1)
+#define SHARED_MEM_POS (MEM_SIZE >> 2)
+#define SHARED_MEM_SIZE (MEM_SIZE >> 1)
 #define BUS_MEM_SIZE (MEM_SIZE >> 2)
-#define BUS_MEM_POS (SHARED_MEM_POS + BUS_MEM_SIZE)
+#define BUS_MEM_POS (SHARED_MEM_POS + SHARED_MEM_SIZE)
+#define TOTAL_SHM_SIZE (SHARED_MEM_SIZE + BUS_MEM_SIZE)
 #define SHARED_FILE "/tmp/y86-shm"
 
 /*** In the following functions, a return value of 1 means success ***/

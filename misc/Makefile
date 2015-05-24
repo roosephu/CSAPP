@@ -1,12 +1,12 @@
 CC=gcc
-CFLAGS=-Wall -ggdb
+CFLAGS=-Wall -ggdb3 -DBIG_MEM
 LCFLAGS=-O2
 LEX = flex
 YACC=bison
 LEXLIB = -lfl
 YAS=./yas
 
-all: yis yas hcl2c
+all: yis yas hcl2c bus
 
 # These are implicit rules for making .yo files from .ys files.
 # E.g., make sum.yo
@@ -51,6 +51,9 @@ lex.yy.c: hcl.lex
 
 hcl.tab.c: hcl.y
 	$(YACC) -d hcl.y
+
+bus: bus.c
+	$(CC) $(CFLAGS) -c bus.c
 
 clean:
 	rm -f *.o *.yo *.exe yis yas hcl2c mux4 *~ core.*

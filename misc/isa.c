@@ -5,12 +5,14 @@
 #include <assert.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
+#include <sys/file.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include "isa.h"
 
 #define cerr(...) fprintf(stderr, __VA_ARGS__)
 #define cfatal(...) fprintf(stder, __VA_ARGS__), assert(0);
+int cerr_log = 1;
 
 /* Are we running in GUI mode? */
 extern int gui_mode;
@@ -81,7 +83,7 @@ instr_t instruction_set[] =
         {"irmovl", HPACK(I_IRMOVL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
         {"rmmovl", HPACK(I_RMMOVL, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0 },
         {"mrmovl", HPACK(I_MRMOVL, F_NONE), 6, M_ARG, 1, 0, R_ARG, 1, 1 },
-        {"mutex",  HPACK(I_MUTEX , F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0},
+        {"rmswap",  HPACK(I_RMSWAP, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0},
         {"addl",   HPACK(I_ALU, A_ADD), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
         {"subl",   HPACK(I_ALU, A_SUB), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
         {"andl",   HPACK(I_ALU, A_AND), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
@@ -138,23 +140,34 @@ instr_ptr bad_instr()
     return &invalid_instr;
 }
 
+cache_t init_cache() {
+    cache_t ret = (cache_t) malloc(sizeof(cache_t));
+    memset(ret, 0, sizeof(cache_t));
+    return ret;
+}
+
 phy_mem_t init_phy_mem() {
-    /* cerr("shared mem size: %d\n", SHARED_MEM_POS); */
+    // cerr("shared mem size: %x %x %x\n", SHARED_MEM_POS, BUS_MEM_POS, TOTAL_SHM_SIZE);
     phy_mem_t ret = (phy_mem_t) malloc(sizeof(phy_mem_t));
     int fd = open(SHARED_FILE, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
     assert(fd != -1);
 
-    ret->shared = mmap(NULL, SHARED_MEM_POS, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FILE, fd, 0);
+    ret->shared = mmap(NULL, TOTAL_SHM_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FILE, fd, 0);
     assert(ret->shared != MAP_FAILED);
-    close(fd);
 
-    cerr("test: %c\n", ret->shared[0]);
+    ret->cache = init_cache();
+
+    int i, ans = 0;
+    for (i = 0; i < TOTAL_SHM_SIZE; ++i)
+        ans += ret->shared[i];
+    /*printf("shared mem sum: %d\n", ans);*/
+    close(fd);
     return ret;
 }
 
 mem_t init_mem(int len, int reg)
 {
-    cerr("--- init mem --- \n");
+    cerr("--- init mem %x %d --- \n", len, reg);
     mem_t result = (mem_t) malloc(sizeof(mem_rec));
     len = ((len+BPL-1)/BPL)*BPL;
     result->len = len;
@@ -177,6 +190,7 @@ void free_mem(mem_t m)
     free((void *) m->contents);
     if (m->aux) {
         munmap(m->aux->shared, SHARED_MEM_POS);
+        free((void *)m->aux->cache);
     }
     free((void *) m);
 }
@@ -190,6 +204,7 @@ mem_t copy_mem(mem_t oldm)
 
 bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile)
 {
+    cerr_log = 0;
     word_t pos;
     int len = oldm->len;
     bool_t diff = FALSE;
@@ -328,19 +343,34 @@ bool_t broadcast(byte_t *msg) {
     return TRUE;
 }
 
+cache_res_t cache_pos(cache_t cache, word_t pos) {
+
+}
+
 bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
-    if (m->aux)
-        cerr("--- get byte val (type: %d, pos: %d) --- \n", m->aux != 0, pos);
-    if (pos >= SHARED_MEM_POS) {
-        assert(m->aux);
-        *dest = m->aux->shared[pos - SHARED_MEM_POS];
+    if (m->aux) {
+        if (pos >= 0x100)
+            cerr("--- get byte val (type: %d, pos: %x) --- \n", m->aux != 0, pos);
+        if (pos >= BUS_MEM_POS) { // no cache
+            assert(m->aux);
+            *dest = m->aux->shared[pos - SHARED_MEM_POS];
+        } else {
+            if (0) {// cache_read(m->aux->cache, pos) == READ_HIT) {
+
+            } else if (pos >= SHARED_MEM_POS) {
+                assert(m->aux);
+                *dest = m->aux->shared[pos - SHARED_MEM_POS];
+            } else {
+                *dest = m->contents[pos];
+            }
+        }
     } else {
         *dest = m->contents[pos];
     }
-    // hit_cache();
+
     return TRUE;
 }
 
@@ -351,14 +381,20 @@ bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
 
-    /* cerr("--- get word val (type: %d, pos: %d) --- \n", m->aux != 0, pos); */
     byte_t *ptr;
-    if (pos >= SHARED_MEM_POS) {
-        ptr = m->aux->shared;
-        pos -= SHARED_MEM_POS;
-    } else {
-        ptr = m->contents;
-        assert(pos + 4 <= SHARED_MEM_POS);
+    if (m->aux || 1) {
+        if (pos >= 0x100 && cerr_log)
+            cerr("--- get word val (type: %d, pos: %x) --- \n", m->aux != 0, pos);
+        if (pos >= BUS_MEM_POS) {
+            ptr = m->aux->shared;
+            pos -= SHARED_MEM_POS;
+        } else if (pos >= SHARED_MEM_POS) {
+            ptr = m->aux->shared;
+            pos -= SHARED_MEM_POS;
+        } else {
+            ptr = m->contents;
+            assert(pos + 4 <= SHARED_MEM_POS);
+        }
     }
 
     val = 0;
@@ -372,8 +408,12 @@ bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
-    cerr("--- set byte val (type: %d, pos: %d, val: %d) --- \n", m->aux != 0, pos, val);
-    if (pos >= SHARED_MEM_POS) {
+    if (m->aux && pos >= 0x100)
+        cerr("--- set byte val (type: %d, pos: %x, val: %x) --- \n", m->aux != 0, pos, val);
+    if (pos >= BUS_MEM_POS) {
+        assert(m->aux);
+        m->aux->shared[pos - SHARED_MEM_POS] = val;
+    } else if (pos >= SHARED_MEM_POS) {
         assert(m->aux);
         m->aux->shared[pos - SHARED_MEM_POS] = val;
     } else {
@@ -388,11 +428,13 @@ bool_t set_word_val(mem_t m, word_t pos, word_t val)
     int i;
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
-    if (m->aux)
-        cerr("--- set word val (type: %d, pos: %d, val: %d) --- \n", m->aux != 0, pos, val);
+    if (m->aux && pos >= 0x100)
+        cerr("--- set word val (type: %d, pos: %x, val: %x) --- \n", m->aux != 0, pos, val);
     byte_t *ptr;
     if (pos >= SHARED_MEM_POS) {
-        cerr("--- SHARED ---\n");
+        ptr = m->aux->shared;
+        pos -= SHARED_MEM_POS;
+    } else if (pos >= SHARED_MEM_POS) {
         ptr = m->aux->shared;
         pos -= SHARED_MEM_POS;
     } else {
@@ -720,7 +762,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
     need_regids =
         (hi0 == I_RRMOVL || hi0 == I_ALU || hi0 == I_PUSHL ||
          hi0 == I_POPL || hi0 == I_IRMOVL || hi0 == I_RMMOVL ||
-         hi0 == I_MRMOVL || hi0 == I_IADDL || hi0 == I_MUTEX);
+         hi0 == I_MRMOVL || hi0 == I_IADDL || hi0 == I_RMSWAP);
 
     if (need_regids) {
         ok1 = get_byte_val(s->m, ftpc, &byte1);
@@ -731,7 +773,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
 
     need_imm =
         (hi0 == I_IRMOVL || hi0 == I_RMMOVL || hi0 == I_MRMOVL ||
-         hi0 == I_JMP || hi0 == I_CALL || hi0 == I_IADDL || hi0 == I_MUTEX);
+         hi0 == I_JMP || hi0 == I_CALL || hi0 == I_IADDL || hi0 == I_RMSWAP);
 
     if (need_imm) {
         okc = get_word_val(s->m, ftpc, &cval);
@@ -1014,8 +1056,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
         s->cc = compute_cc(A_ADD, cval, argB);
         s->pc = ftpc;
         break;
-    case I_MUTEX:
-        cerr("mutex...\n");
+    case I_RMSWAP:
         assert(0);
         if (!ok1) {
             if (error_file)

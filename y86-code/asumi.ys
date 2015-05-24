@@ -32,7 +32,7 @@ Sum:	pushl %ebp
 Loop:	mrmovl (%ecx),%esi   # get *Start
 	addl %esi,%eax       # add to sum
 	iaddl  $4,%ecx       # Start++
-        iaddl  $-1,%edx      # Count--
+    iaddl  $-1,%edx      # Count--
 	jne    Loop          # Stop when 0
 End:	popl %ebp
 	ret

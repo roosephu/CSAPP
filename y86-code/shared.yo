@@ -1,9 +1,39 @@
-                      | # Execution begins at address 0
-  0x000:              | 	.pos 0
-  0x000: 30f064000000 |   irmovl $100, %eax
-  0x006: 30f3afbeadde |   irmovl 0xDEADBEAF, %ebx
-  0x00c: 30f1c8000000 |   irmovl $200, %ecx
-  0x012: 403000000000 |   rmmovl %ebx, (%eax)
-  0x018: 30f378563412 |   irmovl 0x12345678, %ebx
-  0x01e: 403004000000 |   rmmovl %ebx, 4(%eax)
-  0x024: f01004000000 |   mutex %ecx, 4(%eax)
+                       | # 0x4000: shared start
+                       | # 0xC000: bus start
+  0x0000:              |   .pos 0
+  0x0000:30f000400000  |   irmovl 0x4000, %eax
+  0x0006:30f220000000  |   irmovl 0x20, %edx
+                       | 
+                       |   # set up stack
+  0x000c:30f400080000  |   irmovl stack, %esp
+  0x0012:30f500080000  |   irmovl stack, %ebp
+  0x0018:6124          |   subl   %edx, %esp
+                       | 
+  0x001a:30f111010000  |   irmovl 0x111, %ecx
+  0x0020:f01000000000  |   rmswap %ecx, (%eax)
+  0x0026:00            |   halt
+                       |   # iaddl 0x0, %ecx
+  0x0027:7437000000    |   jne prog2
+  0x002c:              | prog1:
+  0x002c:30f201000000  |   irmovl 0x1, %edx
+  0x0032:7042000000    |   jmp end
+                       | 
+  0x0037:              | prog2:
+  0x0037:30f202000000  |   irmovl 0x2, %edx
+  0x003d:7042000000    |   jmp end
+                       | 
+  0x0042:              | end:
+  0x0042:00            |   halt
+                       | 
+  0x0043:              | lock:           # while (*eax != ecx)
+  0x0043:501000000000  |   mrmovl (%eax), %ecx
+  0x0049:6321          |   xorl %edx, %ecx
+  0x004b:7443000000    |   jne lock
+                       | 
+                       | # lock obtained
+  0x0050:c0f301000000  |   iaddl  0x1, %ebx
+  0x0056:402000000000  |   rmmovl %edx, (%eax)
+  0x005c:7043000000    |   jmp lock
+                       | 
+  0x0800:              |   .pos 0x800
+  0x0800:              | stack:
