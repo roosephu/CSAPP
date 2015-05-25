@@ -21,14 +21,23 @@ int main()
     for (i = 0; i < TOTAL_SHM_SIZE; ++i)
         shared[i] = 0;
 
+/*
+    int val = 0x12345678;
+    ((int *)shared)[1] = val;
+    for (i = 0; i < 4; ++i) {
+        shared[i] = val & 0xff;
+        val >>= 8;
+    }
+    printf("%x %x %x %x %x\n", shared[0], shared[4], shared[1], shared[5], *(int *)(shared + 2));*/
+
     int lx = 0;
-    while (1) {
+    while (0) {
         if (shared[0] != lx) {
             lx = shared[0];
             printf("%x\n", lx);
         }
     }
 
-    munmap(shared, 10);
+    munmap(shared, TOTAL_SHM_SIZE);
     return 0;
 }

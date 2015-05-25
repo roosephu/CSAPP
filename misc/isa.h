@@ -1,3 +1,6 @@
+#ifndef MACRO_ISA
+#define MACRO_ISA
+
 /* Instruction Set definition for Y86 Architecture */
 /* Revisions:
    2009-03-11:
@@ -82,18 +85,29 @@ instr_ptr bad_instr();
 typedef unsigned char byte_t;
 typedef int word_t;
 
-#define IS_VALID(flag) (flag & 1)
-#define IS_DIRTY(flag) (flag & 3)
-#define GET_TAG(flag) ((flag >> 2) & 0xF)
+#define IS_VALID(blk) ((blk)->flag & 1)
+#define SET_INVALID(blk) ((blk)->flag ^= (blk)->flag & 1)
+#define IS_DIRTY(blk) (((blk)->flag >> 1) & 1)
+#define SET_DIRTY(blk) ((blk)->flag |= 2)
+#define UNSET_DIRTY(blk) ((blk)->flag ^= (blk)->flag & 2)
+#define GET_TAG(blk) (((blk)->flag >> 3) & 0x1FF)
+#define ADDR_TAG(pos) (((pos) >> 7) & 0x1FF)
+#define ADDR_SET(pos) (((pos) >> 4) & 0x7)
+#define ADDR_OFFSET(pos) ((pos) & 0xF)
+#define TAG_PACK(valid, dirty, tag) (((tag) << 2) | (dirty) << 1 | (valid))
+
+#define PACK_BROADCAST(type, addr) ((int)(type) << 16 | (addr))
+#define BROADCAST_TYPE(broadcast) ((broadcast) >> 16 & 0xFFFF)
+#define BROADCAST_ADDR(broadcast) ((broadcast) & 0xFFFF)
 
 #define NUM_SET (1 << 3)
 #define NUM_BLK (1 << 2)
-#define BLK_SIZE (1 << 3)
+#define BLK_SIZE (1 << 4)
 
 typedef struct {
     int flag;
     byte_t contents[BLK_SIZE];
-} cache_blk_rec;
+} cache_blk_rec, *cache_blk_t;
 
 typedef struct {
     cache_blk_rec blks[NUM_SET][NUM_BLK];
@@ -112,6 +126,12 @@ typedef struct {
     byte_t *contents;
     phy_mem_t aux;
 } mem_rec, *mem_t;
+
+void broadcast(mem_t mem, int type, int addr);
+void response(mem_t mem);
+cache_blk_t load_cache(mem_t mem, cache_t cache, word_t pos);
+cache_blk_t find_cache_blk(cache_t cache, word_t pos);
+void commit_cache(mem_t mem, cache_blk_t blk, word_t addr);
 
 /* Create a memory with len bytes */
 mem_t init_mem(int len, int reg);
@@ -230,5 +250,7 @@ stat_t step_state(state_ptr s, FILE *error_file);
 #ifdef HAS_GUI
 void report_line(int line_no, int addr, char *hexcode, char *line);
 void signal_register_update(reg_id_t r, int val);
+
+#endif
 
 #endif

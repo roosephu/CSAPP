@@ -22,20 +22,23 @@ yas-grammar.c: yas-grammar.lex
 	$(LEX) yas-grammar.lex
 	mv lex.yy.c yas-grammar.c
 
-isa.o: isa.c isa.h
+lock.o: lock.c lock.h
+	$(CC) $(CFLAGS) -c lock.c
+
+isa.o: isa.c isa.h lock.o
 	$(CC) $(CFLAGS) -c isa.c
 
-yas.o: yas.c yas.h isa.h
+yas.o: yas.c yas.h isa.h lock.o
 	$(CC) $(CFLAGS) -c yas.c
 
-yas: yas.o yas-grammar.o isa.o
-	$(CC) $(CFLAGS) yas-grammar.o yas.o isa.o ${LEXLIB} -o yas
+yas: yas.o yas-grammar.o isa.o lock.o
+	$(CC) $(CFLAGS) yas-grammar.o lock.o yas.o isa.o ${LEXLIB} -o yas
 
 yis.o: yis.c isa.h
 	$(CC) $(CFLAGS) -c yis.c
 
-yis: yis.o isa.o
-	$(CC) $(CFLAGS) yis.o isa.o -o yis
+yis: yis.o isa.o lock.o
+	$(CC) $(CFLAGS) yis.o lock.o isa.o -o yis
 
 hcl2c: hcl.tab.c lex.yy.c node.c outgen.c
 	$(CC) $(LCFLAGS) node.c lex.yy.c hcl.tab.c outgen.c -o hcl2c

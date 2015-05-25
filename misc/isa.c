@@ -5,10 +5,10 @@
 #include <assert.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
-#include <sys/file.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include "isa.h"
+#include "lock.h"
 
 #define cerr(...) fprintf(stderr, __VA_ARGS__)
 #define cfatal(...) fprintf(stder, __VA_ARGS__), assert(0);
@@ -142,8 +142,8 @@ instr_ptr bad_instr()
 
 cache_t init_cache()
 {
-    cache_t ret = (cache_t) malloc(sizeof(cache_t));
-    memset(ret, 0, sizeof(cache_t));
+    cache_t ret = (cache_t) malloc(sizeof(cache_rec));
+    memset(ret, 0, sizeof(cache_rec));
     return ret;
 }
 
@@ -342,70 +342,149 @@ int load_mem(mem_t m, FILE *infile, int report_error)
     return byte_cnt;
 }
 
-bool_t broadcast(byte_t *msg)
-{
-    return TRUE;
+int my_id = -1;
+
+void broadcast(mem_t mem, int type, int addr) {
+    int value = PACK_BROADCAST(type, addr);
+    int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
+
+    if (my_id == -1)
+        my_id = ++bus[0];
+
+    bus[my_id] = value;
 }
 
-cache_res_t cache_pos(cache_t cache, word_t pos)
-{
+void response(mem_t mem) {
+    int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
+    int num = bus[0], i;
 
+    if (my_id == -1)
+        my_id = ++bus[0];
+
+    bus[my_id] = 0; // empty my broadcast
+    for (i = 1; i <= num; ++i) {
+        int broadcast = bus[i];
+        word_t type = BROADCAST_TYPE(broadcast);
+        word_t addr = BROADCAST_ADDR(broadcast);
+        if (addr < SHARED_MEM_POS)
+            continue;
+
+        cache_blk_t blk = find_cache_blk(mem->aux->cache, addr);
+        if (type == 'W') {
+            if (blk != NULL)
+                SET_INVALID(blk);
+        } else if (type == 'R')  {
+            if (blk != NULL && IS_DIRTY(blk)) {
+                commit_cache(mem, blk, addr);
+            }
+        }
+    }
+}
+
+cache_blk_t load_cache(mem_t mem, cache_t cache, word_t pos) {
+    int i;
+    int set = ADDR_SET(pos), tag = ADDR_TAG(pos);
+    pos -= ADDR_OFFSET(pos);
+
+    // broadcast
+    broadcast(mem, 'R', pos);
+    unlock();
+    lock();
+    response(mem);
+
+    // find the block to substitute
+    cache_blk_t ret = NULL;
+    for (i = 0; i < NUM_BLK; ++i) {
+        cache_blk_t blk = &cache->blks[set][i];
+        if (!IS_VALID(blk)) {
+            ret = blk;
+        }
+    }
+    if (!ret)
+        ret = &cache->blks[set][rand() % NUM_BLK];
+
+    // load memory to this block
+    ret->flag = TAG_PACK(1, 0, tag);
+    byte_t *ptr = NULL;
+    if (pos >= SHARED_MEM_POS) { // load from shared memory
+        ptr = mem->aux->shared - SHARED_MEM_POS;
+    } else {
+        ptr = mem->contents;
+    }
+    memcpy(ret->contents, ptr + pos, BLK_SIZE);
+
+    return ret;
+}
+
+cache_blk_t find_cache_blk(cache_t cache, word_t pos) {
+    int b, tag = ADDR_TAG(pos), set = ADDR_SET(pos);
+    for (b = 0; b < NUM_BLK; ++b) {
+        cache_blk_t blk = &cache->blks[set][b];
+        if (IS_VALID(blk) && GET_TAG(blk) == tag) {
+            return blk;
+        }
+    }
+    return 0;
+}
+
+void commit_cache(mem_t mem, cache_blk_t blk, word_t addr) {
+    addr -= ADDR_OFFSET(addr);
+    memcpy(mem->aux->shared + addr - SHARED_MEM_POS, blk->contents, BLK_SIZE);
+    UNSET_DIRTY(blk);
 }
 
 bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
-    if (m->aux) {
-        if (pos >= 0x100)
-            cerr("--- get byte val (type: %d, pos: %x) --- \n", m->aux != 0, pos);
-        if (pos >= BUS_MEM_POS) { // no cache
-            assert(m->aux);
-            *dest = m->aux->shared[pos - SHARED_MEM_POS];
-        } else {
-            if (0) {// cache_read(m->aux->cache, pos) == READ_HIT) {
-
-            } else if (pos >= SHARED_MEM_POS) {
-                assert(m->aux);
-                *dest = m->aux->shared[pos - SHARED_MEM_POS];
-            } else {
-                *dest = m->contents[pos];
-            }
-        }
-    } else {
+    else if (!m->aux) {
         *dest = m->contents[pos];
+        return TRUE;
+    } else if (pos >= BUS_MEM_POS) {
+        assert(m->aux);
+        *dest = m->aux->shared[pos - SHARED_MEM_POS];
+        return TRUE;
     }
 
+    cache_t c = m->aux->cache;
+    cache_blk_t blk = find_cache_blk(c, pos);
+
+    bool_t hit = !!blk;
+    if (!blk)
+        blk = load_cache(m, c, pos);
+
+    *dest = blk->contents[ADDR_OFFSET(pos)];
+
+    if (cerr_log)
+        cerr("--- get byte val (type: %d, pos: %x, val: %02x) READ %s --- \n", m->aux != 0, pos, *dest, hit ? "HIT" : "MISS");
     return TRUE;
 }
 
 bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
 {
-    int i;
-    word_t val;
+    word_t val = 0;
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
-
-    byte_t *ptr;
-    if (m->aux || 1) {
-        if ((1 || pos >= 0x100) && cerr_log)
-            cerr("--- get word val (type: %d, pos: %x) --- \n", m->aux != 0, pos);
-        if (pos >= BUS_MEM_POS) {
-            ptr = m->aux->shared;
-            pos -= SHARED_MEM_POS;
-        } else if (pos >= SHARED_MEM_POS) {
-            ptr = m->aux->shared;
-            pos -= SHARED_MEM_POS;
-        } else {
-            ptr = m->contents;
-            assert(pos + 4 <= SHARED_MEM_POS);
-        }
+    else if (!m->aux) {
+        *dest = *(int *)(m->contents + pos);
+        return TRUE;
+    } else if (pos >= BUS_MEM_POS) {
+        pos -= SHARED_MEM_POS;
+        *dest = *(int *)(m->aux->shared + pos);
+        return TRUE;
     }
 
-    val = 0;
-    for (i = 0; i < 4; i++)
-        val = val | ptr[pos+i]<<(8*i);
+    cerr_log = FALSE;
+    int i; byte_t b = 0;
+    for (i = 0; i < 4; ++i) {
+        get_byte_val(m, pos + i, &b);
+        val = val | ((word_t)b << (i * 8));
+    }
     *dest = val;
+
+    cerr("--- get word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, *dest);
+
+    cerr_log = TRUE;
     return TRUE;
 }
 
@@ -413,18 +492,32 @@ bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
 {
     if (pos < 0 || pos >= m->len)
         return FALSE;
-    if (m->aux && pos >= 0x100)
-        cerr("--- set byte val (type: %d, pos: %x, val: %x) --- \n", m->aux != 0, pos, val);
-    if (pos >= BUS_MEM_POS) {
-        assert(m->aux);
-        m->aux->shared[pos - SHARED_MEM_POS] = val;
-    } else if (pos >= SHARED_MEM_POS) {
-        assert(m->aux);
-        m->aux->shared[pos - SHARED_MEM_POS] = val;
-    } else {
+    else if (!m->aux) {
         m->contents[pos] = val;
+        return TRUE;
+    } else if (pos >= BUS_MEM_POS) {
+        assert(m->aux);
+        m->aux->shared[pos - SHARED_MEM_POS] = val;
+        return TRUE;
     }
-    /* m->contents[pos] = val; */
+
+    cache_t c = m->aux->cache;
+
+    cache_blk_t blk = find_cache_blk(c, pos);
+    bool_t hit = !!blk;
+    if (!blk)
+        blk = load_cache(m, c, pos);
+    if (cerr_log)
+        cerr("--- set byte val (type: %d, pos: %x, val: %02x) WRITE %s --- \n", m->aux != 0, pos, val, hit ? "HIT" : "MISS");
+
+    // broadcast
+    broadcast(m, 'W', pos);
+    unlock();
+    lock();
+    response(m);
+    blk->contents[ADDR_OFFSET(pos)] = val;
+    SET_DIRTY(blk);
+
     return TRUE;
 }
 
@@ -433,24 +526,21 @@ bool_t set_word_val(mem_t m, word_t pos, word_t val)
     int i;
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
-    if (m->aux && pos >= 0x100)
-        cerr("--- set word val (type: %d, pos: %x, val: %x) --- \n", m->aux != 0, pos, val);
-    byte_t *ptr;
-    if (pos >= SHARED_MEM_POS) {
-        ptr = m->aux->shared;
-        pos -= SHARED_MEM_POS;
+    else if (!m->aux) {
+        *(int *)(m->contents + pos) = val;
+        return TRUE;
     } else if (pos >= SHARED_MEM_POS) {
-        ptr = m->aux->shared;
-        pos -= SHARED_MEM_POS;
-    } else {
-        ptr = m->contents;
-        assert(pos + 4 <= SHARED_MEM_POS);
+        *(int *)(m->aux->shared + pos) = val;
+        return TRUE;
     }
 
-    for (i = 0; i < 4; i++) {
-        ptr[pos+i] = val & 0xFF;
+    cerr_log = FALSE;
+    for (i = 0; i < 4; ++i) {
+        set_byte_val(m, pos + i, val & 0xFF);
         val >>= 8;
     }
+    cerr_log = TRUE;
+    cerr("--- set word val (type: %d, pos: %x, val: %08x) WRITE %s --- \n", m->aux != 0, pos, val);
     return TRUE;
 }
 

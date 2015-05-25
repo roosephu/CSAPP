@@ -16,6 +16,7 @@
 #include "pipeline.h"
 #include "stages.h"
 #include "sim.h"
+#include "lock.h"
 
 #define MAXBUF 1024
 #define DEFAULTNAME "Y86 Simulator: "
@@ -628,19 +629,19 @@ static void update_state(bool_t update_mem, bool_t update_cc)
     if (wb_destE != REG_NONE) {
         if (update_reg) {
             get_word_val(mem, mem_addr, &wb_valE);
-            cerr("\tMemory get: 0x%x of value 0x%x\n", mem_addr, wb_valE);
+            // cerr("\tMemory get: 0x%x of value 0x%x\n", mem_addr, wb_valE);
         }
         sim_log("\tWriteback: Wrote 0x%x to register %s\n",
                 wb_valE, reg_name(wb_destE));
-        cerr("E \tWriteback: Wrote 0x%x to register %s || %d %d\n",
-             wb_valE, reg_name(wb_destE), update_mem, mem_write);
+        // cerr("E \tWriteback: Wrote 0x%x to register %s || %d %d\n",
+        //     wb_valE, reg_name(wb_destE), update_mem, mem_write);
         set_reg_val(reg, wb_destE, wb_valE);
     }
     if (wb_destM != REG_NONE) {
         sim_log("\tWriteback: Wrote 0x%x to register %s\n",
                 wb_valM, reg_name(wb_destM));
-        cerr("E \tWriteback: Wrote 0x%x to register %s || %d %d\n",
-             wb_valE, reg_name(wb_destE), update_mem, mem_write);
+        // cerr("M \tWriteback: Wrote 0x%x to register %s || %d %d\n",
+        //      wb_valE, reg_name(wb_destE), update_mem, mem_write);
         set_reg_val(reg, wb_destM, wb_valM);
     }
 
@@ -791,12 +792,15 @@ int sim_run_pipe(int max_instr, int max_cycle, byte_t *statusp, cc_t *ccp)
     byte_t run_status = STAT_AOK;
     while (icount < max_instr && ccount < max_cycle) {
         cerr("......................................\n");
+        lock();
+        response(mem);
         run_status = sim_step_pipe(max_instr-icount, ccount);
         if (run_status != STAT_BUB)
             icount++;
         if (run_status != STAT_AOK && run_status != STAT_BUB)
             break;
         ccount++;
+        unlock();
         // sleep(1);
         // system("read \\?Enter");
     }

@@ -37,7 +37,7 @@ extern int memCnt;
 extern mem_t reg;
 /* Condition code register */
 extern cc_t cc;
-extern stat_t stat;
+extern stat_t Stat;
 
 /* Operand sources in EX (to show forwarding) */
 extern mux_source_t amux, bmux;
@@ -126,7 +126,7 @@ void sim_set_dumpfile(FILE *file);
  */
 void sim_log( const char *format, ... );
 
- 
+
 /******************* GUI Interface Functions **********************/
 #ifdef HAS_GUI
 
@@ -149,4 +149,3 @@ void show_stat(stat_t stat);
 void create_memory_display();
 void set_memory(int addr, int val);
 #endif
-								       
