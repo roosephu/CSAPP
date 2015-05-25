@@ -7,6 +7,7 @@
  ***********************************************************************/
 
 #include <stdio.h>
+#include <assert.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -790,9 +791,9 @@ int sim_run_pipe(int max_instr, int max_cycle, byte_t *statusp, cc_t *ccp)
     int icount = 0;
     int ccount = 0;
     byte_t run_status = STAT_AOK;
+    init_bus_id(mem);
     while (icount < max_instr && ccount < max_cycle) {
         cerr("......................................\n");
-        lock();
         response(mem);
         run_status = sim_step_pipe(max_instr-icount, ccount);
         if (run_status != STAT_BUB)
@@ -800,10 +801,11 @@ int sim_run_pipe(int max_instr, int max_cycle, byte_t *statusp, cc_t *ccp)
         if (run_status != STAT_AOK && run_status != STAT_BUB)
             break;
         ccount++;
-        unlock();
         // sleep(1);
-        // system("read \\?Enter");
+        //if (system("read x") != 0)
+        //    assert(0);
     }
+    leave_bus(mem);
     if (statusp)
         *statusp = run_status;
     if (ccp)

@@ -90,19 +90,21 @@ typedef int word_t;
 #define IS_DIRTY(blk) (((blk)->flag >> 1) & 1)
 #define SET_DIRTY(blk) ((blk)->flag |= 2)
 #define UNSET_DIRTY(blk) ((blk)->flag ^= (blk)->flag & 2)
-#define GET_TAG(blk) (((blk)->flag >> 3) & 0x1FF)
+#define GET_TAG(blk) (((blk)->flag >> 2) & 0x1FF)
 #define ADDR_TAG(pos) (((pos) >> 7) & 0x1FF)
 #define ADDR_SET(pos) (((pos) >> 4) & 0x7)
 #define ADDR_OFFSET(pos) ((pos) & 0xF)
 #define TAG_PACK(valid, dirty, tag) (((tag) << 2) | (dirty) << 1 | (valid))
 
-#define PACK_BROADCAST(type, addr) ((int)(type) << 16 | (addr))
-#define BROADCAST_TYPE(broadcast) ((broadcast) >> 16 & 0xFFFF)
+#define PACK_BROADCAST(id, type, addr) ((id) << 24 | (type) << 16 | (addr))
+#define BROADCAST_TYPE(broadcast) ((broadcast) >> 16 & 0xFF)
 #define BROADCAST_ADDR(broadcast) ((broadcast) & 0xFFFF)
 
 #define NUM_SET (1 << 3)
-#define NUM_BLK (1 << 2)
+#define NUM_BLK (1 << 3)
 #define BLK_SIZE (1 << 4)
+
+#define SLEEP_USEC 50
 
 typedef struct {
     int flag;
@@ -128,7 +130,9 @@ typedef struct {
 } mem_rec, *mem_t;
 
 void broadcast(mem_t mem, int type, int addr);
-void response(mem_t mem);
+bool_t response(mem_t mem);
+void init_bus_id(mem_t mem);
+void leave_bus(mem_t mem);
 cache_blk_t load_cache(mem_t mem, cache_t cache, word_t pos);
 cache_blk_t find_cache_blk(cache_t cache, word_t pos);
 void commit_cache(mem_t mem, cache_blk_t blk, word_t addr);

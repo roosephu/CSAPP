@@ -14,7 +14,6 @@ end:
   # set up stack
   irmovl stack, %esp
   irmovl stack, %ebp
-  subl   %edx, %esp
 
 lock:                      # while (*eax != edx)
   mrmovl (%eax), %ebx

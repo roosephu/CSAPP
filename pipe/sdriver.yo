@@ -77,8 +77,8 @@
                        | ###############################
   0x0090:              | 	.align 4
   0x0090:              | src:
-  0x0090:01000000      | 	.long 1
-  0x0094:feffffff      | 	.long -2
+  0x0090:ffffffff      | 	.long -1
+  0x0094:02000000      | 	.long 2
   0x0098:fdffffff      | 	.long -3
   0x009c:04000000      | 	.long 4
   0x00a0:fadebc00      | 	.long 0xbcdefa # This shouldn't get moved
