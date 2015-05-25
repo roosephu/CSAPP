@@ -215,7 +215,7 @@ int d_dstE = [
 
 ## What register should be used as the M destination?
 int d_dstM = [
-	D_icode in { IMRMOVL, IPOPL, IRMSWAP } : D_rA;
+	D_icode in { IMRMOVL, IPOPL } : D_rA; # IRMSWAP needn't to be here
     D_icode == ILEAVE : REBP;
 	1 : RNONE;  # Don't write any register
 ];
@@ -328,6 +328,7 @@ int Stat = [
 bool F_bubble = 0;
 bool F_stall =
 	# Conditions for a load/use hazard
+	E_icode == IRMSWAP ||
 	E_icode in { IMRMOVL, IPOPL, ILEAVE } &&
 	 E_dstM in { d_srcA, d_srcB } ||
 	# Stalling at fetch while ret passes through pipeline
@@ -337,6 +338,7 @@ bool F_stall =
 # At most one of these can be true.
 bool D_stall =
 	# Conditions for a load/use hazard
+	E_icode == IRMSWAP ||
 	E_icode in { IMRMOVL, IPOPL, ILEAVE } &&
 	 E_dstM in { d_srcA, d_srcB };
 
@@ -345,7 +347,8 @@ bool D_bubble =
 	(E_icode == IJXX && !e_Cnd) ||
 	# Stalling at fetch while ret passes through pipeline
 	# but not condition for a load/use hazard
-	!(E_icode in { IMRMOVL, IPOPL, ILEAVE } && E_dstM in { d_srcA, d_srcB }) &&
+	!(E_icode == IRMSWAP ||
+	  E_icode in { IMRMOVL, IPOPL, ILEAVE } && E_dstM in { d_srcA, d_srcB }) &&
 	  IRET in { D_icode, E_icode, M_icode };
 
 # Should I stall or inject a bubble into Pipeline Register E?
@@ -355,6 +358,7 @@ bool E_bubble =
 	# Mispredicted branch
 	(E_icode == IJXX && !e_Cnd) ||
 	# Conditions for a load/use hazard
+	E_icode == IRMSWAP ||
 	E_icode in { IMRMOVL, IPOPL, ILEAVE } &&
 	 E_dstM in { d_srcA, d_srcB};
 

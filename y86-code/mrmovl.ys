@@ -1,0 +1,41 @@
+# 0x4000: shared start
+# 0xC000: bus start
+  .pos 0
+  irmovl 0x4000, %eax
+  irmovl 0x1, %ecx
+  # rmmovl %ecx, (%eax)
+  # irmovl 0x0, %ecx
+
+  # mrmovl (%eax), %ecx
+  rmswap %ecx, (%eax)
+  andl %ecx, %ecx
+  jne prog2
+prog1:
+  irmovl 0x2, %edx
+  jmp end
+
+prog2:
+  irmovl 0x3, %edx
+  jmp end
+
+end:
+  halt
+
+  # set up stack
+  irmovl stack, %esp
+  irmovl stack, %ebp
+  subl   %edx, %esp
+
+
+lock:           # while (*eax != ecx)
+  mrmovl (%eax), %ecx
+  xorl %edx, %ecx
+  jne lock
+
+# lock obtained
+  iaddl  0x1, %ebx
+  rmmovl %edx, (%eax)
+  jmp lock
+
+  .pos 0x800
+stack:

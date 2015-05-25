@@ -67,53 +67,52 @@ int reg_valid(reg_id_t id)
     return id >= 0 && id < REG_NONE && reg_table[id].id == id;
 }
 
-instr_t instruction_set[] =
-    {
-        {"nop",    HPACK(I_NOP, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-        {"halt",   HPACK(I_HALT, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-        {"rrmovl", HPACK(I_RRMOVL, F_NONE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        /* Conditional move instructions are variants of RRMOVL */
-        {"cmovle", HPACK(I_RRMOVL, C_LE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"cmovl", HPACK(I_RRMOVL, C_L), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"cmove", HPACK(I_RRMOVL, C_E), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"cmovne", HPACK(I_RRMOVL, C_NE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"cmovge", HPACK(I_RRMOVL, C_GE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"cmovg", HPACK(I_RRMOVL, C_G), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        /* arg1hi indicates number of bytes */
-        {"irmovl", HPACK(I_IRMOVL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
-        {"rmmovl", HPACK(I_RMMOVL, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0 },
-        {"mrmovl", HPACK(I_MRMOVL, F_NONE), 6, M_ARG, 1, 0, R_ARG, 1, 1 },
-        {"rmswap",  HPACK(I_RMSWAP, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0},
-        {"addl",   HPACK(I_ALU, A_ADD), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"subl",   HPACK(I_ALU, A_SUB), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"andl",   HPACK(I_ALU, A_AND), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        {"xorl",   HPACK(I_ALU, A_XOR), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
-        /* arg1hi indicates number of bytes */
-        {"jmp",    HPACK(I_JMP, C_YES), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"jle",    HPACK(I_JMP, C_LE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"jl",     HPACK(I_JMP, C_L), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"je",     HPACK(I_JMP, C_E), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"jne",    HPACK(I_JMP, C_NE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"jge",    HPACK(I_JMP, C_GE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"jg",     HPACK(I_JMP, C_G), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"call",   HPACK(I_CALL, F_NONE),    5, I_ARG, 1, 4, NO_ARG, 0, 0 },
-        {"ret",    HPACK(I_RET, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-        {"pushl",  HPACK(I_PUSHL, F_NONE) , 2, R_ARG, 1, 1, NO_ARG, 0, 0 },
-        {"popl",   HPACK(I_POPL, F_NONE) ,  2, R_ARG, 1, 1, NO_ARG, 0, 0 },
-        {"iaddl",  HPACK(I_IADDL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
-        {"leave",  HPACK(I_LEAVE, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
-        /* this is just a hack to make the I_POP2 code have an associated name */
-        {"pop2",   HPACK(I_POP2, F_NONE) , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+instr_t instruction_set[] = {
+    {"nop",    HPACK(I_NOP, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+    {"halt",   HPACK(I_HALT, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+    {"rrmovl", HPACK(I_RRMOVL, F_NONE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    /* Conditional move instructions are variants of RRMOVL */
+    {"cmovle", HPACK(I_RRMOVL, C_LE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"cmovl", HPACK(I_RRMOVL, C_L), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"cmove", HPACK(I_RRMOVL, C_E), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"cmovne", HPACK(I_RRMOVL, C_NE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"cmovge", HPACK(I_RRMOVL, C_GE), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"cmovg", HPACK(I_RRMOVL, C_G), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    /* arg1hi indicates number of bytes */
+    {"irmovl", HPACK(I_IRMOVL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
+    {"rmmovl", HPACK(I_RMMOVL, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0 },
+    {"mrmovl", HPACK(I_MRMOVL, F_NONE), 6, M_ARG, 1, 0, R_ARG, 1, 1 },
+    {"rmswap",  HPACK(I_RMSWAP, F_NONE), 6, R_ARG, 1, 1, M_ARG, 1, 0},
+    {"addl",   HPACK(I_ALU, A_ADD), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"subl",   HPACK(I_ALU, A_SUB), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"andl",   HPACK(I_ALU, A_AND), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    {"xorl",   HPACK(I_ALU, A_XOR), 2, R_ARG, 1, 1, R_ARG, 1, 0 },
+    /* arg1hi indicates number of bytes */
+    {"jmp",    HPACK(I_JMP, C_YES), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"jle",    HPACK(I_JMP, C_LE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"jl",     HPACK(I_JMP, C_L), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"je",     HPACK(I_JMP, C_E), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"jne",    HPACK(I_JMP, C_NE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"jge",    HPACK(I_JMP, C_GE), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"jg",     HPACK(I_JMP, C_G), 5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"call",   HPACK(I_CALL, F_NONE),    5, I_ARG, 1, 4, NO_ARG, 0, 0 },
+    {"ret",    HPACK(I_RET, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+    {"pushl",  HPACK(I_PUSHL, F_NONE) , 2, R_ARG, 1, 1, NO_ARG, 0, 0 },
+    {"popl",   HPACK(I_POPL, F_NONE) ,  2, R_ARG, 1, 1, NO_ARG, 0, 0 },
+    {"iaddl",  HPACK(I_IADDL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
+    {"leave",  HPACK(I_LEAVE, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+    /* this is just a hack to make the I_POP2 code have an associated name */
+    {"pop2",   HPACK(I_POP2, F_NONE) , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 },
 
-        /* For allocation instructions, arg1hi indicates number of bytes */
-        {".byte",  0x00, 1, I_ARG, 0, 1, NO_ARG, 0, 0 },
-        {".word",  0x00, 2, I_ARG, 0, 2, NO_ARG, 0, 0 },
-        {".long",  0x00, 4, I_ARG, 0, 4, NO_ARG, 0, 0 },
-        {NULL,     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 }
-    };
+    /* For allocation instructions, arg1hi indicates number of bytes */
+    {".byte",  0x00, 1, I_ARG, 0, 1, NO_ARG, 0, 0 },
+    {".word",  0x00, 2, I_ARG, 0, 2, NO_ARG, 0, 0 },
+    {".long",  0x00, 4, I_ARG, 0, 4, NO_ARG, 0, 0 },
+    {NULL,     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 }
+};
 
 instr_t invalid_instr =
-    {"XXX",     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 };
+{"XXX",     0   , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 };
 
 instr_ptr find_instr(char *name)
 {
@@ -125,7 +124,8 @@ instr_ptr find_instr(char *name)
 }
 
 /* Return name of instruction given its encoding */
-char *iname(int instr) {
+char *iname(int instr)
+{
     int i;
     for (i = 0; instruction_set[i].name; i++) {
         if (instr == instruction_set[i].code)
@@ -140,13 +140,15 @@ instr_ptr bad_instr()
     return &invalid_instr;
 }
 
-cache_t init_cache() {
+cache_t init_cache()
+{
     cache_t ret = (cache_t) malloc(sizeof(cache_t));
     memset(ret, 0, sizeof(cache_t));
     return ret;
 }
 
-phy_mem_t init_phy_mem() {
+phy_mem_t init_phy_mem()
+{
     // cerr("shared mem size: %x %x %x\n", SHARED_MEM_POS, BUS_MEM_POS, TOTAL_SHM_SIZE);
     phy_mem_t ret = (phy_mem_t) malloc(sizeof(phy_mem_t));
     int fd = open(SHARED_FILE, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
@@ -211,7 +213,8 @@ bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile)
     if (newm->len < len)
         len = newm->len;
     for (pos = 0; (!diff || outfile) && pos < len; pos += 4) {
-        word_t ov = 0;  word_t nv = 0;
+        word_t ov = 0;
+        word_t nv = 0;
         get_word_val(oldm, pos, &ov);
         get_word_val(newm, pos, &nv);
         if (nv != ov) {
@@ -263,7 +266,7 @@ int load_mem(mem_t m, FILE *infile, int report_error)
             cpos++;
 
         if (buf[cpos] != '0' ||
-            (buf[cpos+1] != 'x' && buf[cpos+1] != 'X'))
+                (buf[cpos+1] != 'x' && buf[cpos+1] != 'X'))
             continue; /* Skip this line */
         cpos+=2;
 
@@ -296,7 +299,7 @@ int load_mem(mem_t m, FILE *infile, int report_error)
 
         /* Get code */
         while (isxdigit((int)(ch=buf[cpos++])) &&
-               isxdigit((int)(cl=buf[cpos++]))) {
+                isxdigit((int)(cl=buf[cpos++]))) {
             byte_t byte = 0;
             if (bytepos >= m->len) {
                 if (report_error) {
@@ -339,11 +342,13 @@ int load_mem(mem_t m, FILE *infile, int report_error)
     return byte_cnt;
 }
 
-bool_t broadcast(byte_t *msg) {
+bool_t broadcast(byte_t *msg)
+{
     return TRUE;
 }
 
-cache_res_t cache_pos(cache_t cache, word_t pos) {
+cache_res_t cache_pos(cache_t cache, word_t pos)
+{
 
 }
 
@@ -383,7 +388,7 @@ bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
 
     byte_t *ptr;
     if (m->aux || 1) {
-        if (pos >= 0x100 && cerr_log)
+        if ((1 || pos >= 0x100) && cerr_log)
             cerr("--- get word val (type: %d, pos: %x) --- \n", m->aux != 0, pos);
         if (pos >= BUS_MEM_POS) {
             ptr = m->aux->shared;
@@ -530,7 +535,8 @@ void set_reg_val(mem_t r, reg_id_t id, word_t val)
     }
 }
 
-void dump_reg(FILE *outfile, mem_t r) {
+void dump_reg(FILE *outfile, mem_t r)
+{
     reg_id_t id;
     for (id = 0; reg_valid(id); id++) {
         fprintf(outfile, "   %s  ", reg_table[id].name);
@@ -547,14 +553,13 @@ void dump_reg(FILE *outfile, mem_t r) {
 struct {
     char symbol;
     int id;
-} alu_table[A_NONE+1] =
-    {
-        {'+',   A_ADD},
-        {'-',   A_SUB},
-        {'&',   A_AND},
-        {'^',   A_XOR},
-        {'?',   A_NONE}
-    };
+} alu_table[A_NONE+1] = {
+    {'+',   A_ADD},
+    {'-',   A_SUB},
+    {'&',   A_AND},
+    {'^',   A_XOR},
+    {'?',   A_NONE}
+};
 
 char op_name(alu_t op)
 {
@@ -595,11 +600,11 @@ cc_t compute_cc(alu_t op, word_t argA, word_t argB)
     switch(op) {
     case A_ADD:
         ovf = (((int) argA < 0) == ((int) argB < 0)) &&
-            (((int) val < 0) != ((int) argA < 0));
+              (((int) val < 0) != ((int) argA < 0));
         break;
     case A_SUB:
         ovf = (((int) argA > 0) == ((int) argB < 0)) &&
-            (((int) val < 0) != ((int) argB < 0));
+              (((int) val < 0) != ((int) argB < 0));
         break;
     case A_AND:
     case A_XOR:
@@ -620,7 +625,8 @@ char *cc_names[8] = {
     "Z=1 S=0 O=0",
     "Z=1 S=0 O=1",
     "Z=1 S=1 O=0",
-    "Z=1 S=1 O=1"};
+    "Z=1 S=1 O=1"
+};
 
 char *cc_name(cc_t c)
 {
@@ -661,7 +667,8 @@ void free_state(state_ptr s)
     free((void *) s);
 }
 
-state_ptr copy_state(state_ptr s) {
+state_ptr copy_state(state_ptr s)
+{
     state_ptr result = (state_ptr) malloc(sizeof(state_rec));
     result->pc = s->pc;
     result->r = copy_reg(s->r);
@@ -670,7 +677,8 @@ state_ptr copy_state(state_ptr s) {
     return result;
 }
 
-bool_t diff_state(state_ptr olds, state_ptr news, FILE *outfile) {
+bool_t diff_state(state_ptr olds, state_ptr news, FILE *outfile)
+{
     bool_t diff = FALSE;
 
     if (olds->pc != news->pc) {
@@ -694,7 +702,8 @@ bool_t diff_state(state_ptr olds, state_ptr news, FILE *outfile) {
 
 
 /* Branch logic */
-bool_t cond_holds(cc_t cc, cond_t bcond) {
+bool_t cond_holds(cc_t cc, cond_t bcond)
+{
     bool_t zf = GET_ZF(cc);
     bool_t sf = GET_SF(cc);
     bool_t of = GET_OF(cc);

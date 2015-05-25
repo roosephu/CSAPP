@@ -5,7 +5,8 @@
 #include <unistd.h>
 #include "isa.h"
 
-int main() {
+int main()
+{
     int fd = open(SHARED_FILE, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
     assert(fd != -1);
 
@@ -24,7 +25,7 @@ int main() {
     while (1) {
         if (shared[0] != lx) {
             lx = shared[0];
-            printf("%d\n", lx);
+            printf("%x\n", lx);
         }
     }
 

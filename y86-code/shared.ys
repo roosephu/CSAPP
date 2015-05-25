@@ -2,37 +2,28 @@
 # 0xC000: bus start
   .pos 0
   irmovl 0x4000, %eax
-  irmovl 0x20, %edx
+  irmovl 0x1, %ecx
 
+  rmswap %ecx, (%eax)
+  nop                      # ecx needs a round to write back
+  andl   %ecx, %ecx
+  irmovl 0x1, %edx
+  xorl   %ecx, %edx        # edx = *eax ^ 1
+
+end:
   # set up stack
   irmovl stack, %esp
   irmovl stack, %ebp
   subl   %edx, %esp
 
-  irmovl 0x111, %ecx
-  rmswap %ecx, (%eax)
-  halt
-  # iaddl 0x0, %ecx
-  jne prog2
-prog1:
-  irmovl 0x1, %edx
-  jmp end
-
-prog2:
-  irmovl 0x2, %edx
-  jmp end
-
-end:
-  halt
-
-lock:           # while (*eax != ecx)
-  mrmovl (%eax), %ecx
-  xorl %edx, %ecx
+lock:                      # while (*eax != edx)
+  mrmovl (%eax), %ebx
+  xorl %edx, %ebx
   jne lock
 
 # lock obtained
-  iaddl  0x1, %ebx
-  rmmovl %edx, (%eax)
+  iaddl  0x1, %esi
+  rmmovl %ecx, (%eax)
   jmp lock
 
   .pos 0x800

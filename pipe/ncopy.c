@@ -13,11 +13,11 @@ int ncopy(int *src, int *dst, int len)
     int val;
 
     while (len > 0) {
-	val = *src++;
-	*dst++ = val;
-	if (val > 0)
-	    count++;
-	len--;
+        val = *src++;
+        *dst++ = val;
+        if (val > 0)
+            count++;
+        len--;
     }
     return count;
 }
@@ -28,7 +28,7 @@ int main()
     int i, count;
 
     for (i=0; i<8; i++)
-	src[i]= i+1;
+        src[i]= i+1;
     count = ncopy(src, dst, 8);
     printf ("count=%d\n", count);
     exit(0);

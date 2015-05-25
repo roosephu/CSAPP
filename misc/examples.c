@@ -1,6 +1,6 @@
-/* 
- * Architecture Lab: Part A 
- * 
+/*
+ * Architecture Lab: Part A
+ *
  * High level specs for the functions that the students will rewrite
  * in Y86 assembly language
  */
@@ -17,8 +17,8 @@ int sum_list(list_ptr ls)
 {
     int val = 0;
     while (ls) {
-	val += ls->val;
-	ls = ls->next;
+        val += ls->val;
+        ls = ls->next;
     }
     return val;
 }
@@ -27,11 +27,11 @@ int sum_list(list_ptr ls)
 int rsum_list(list_ptr ls)
 {
     if (!ls)
-	return 0;
+        return 0;
     else {
-	int val = ls->val;
-	int rest = rsum_list(ls->next);
-	return val + rest;
+        int val = ls->val;
+        int rest = rsum_list(ls->next);
+        return val + rest;
     }
 }
 
@@ -40,10 +40,10 @@ int copy_block(int *src, int *dest, int len)
 {
     int result = 0;
     while (len > 0) {
-	int val = *src++;
-	*dest++ = val;
-	result ^= val;
-	len--;
+        int val = *src++;
+        *dest++ = val;
+        result ^= val;
+        len--;
     }
     return result;
 }

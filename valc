@@ -1,0 +1,131 @@
+./pipe/pipe-1w.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-1w.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-1w.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-1w.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-1w.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-1w.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-1w.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-1w.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-1w.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-broken.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-broken.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-broken.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-broken.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-broken.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-broken.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-broken.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-broken.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-broken.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-btfnt.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-btfnt.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-btfnt.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-btfnt.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-btfnt.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-btfnt.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-btfnt.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-btfnt.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-btfnt.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-full.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-full.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-full.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-full.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-full.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-full.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-full.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-full.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-full.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-lf.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-lf.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-lf.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-lf.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-lf.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-lf.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-lf.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-lf.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-lf.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-nobypass.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-nobypass.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-nobypass.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-nobypass.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-nobypass.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-nobypass.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-nobypass.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-nobypass.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-nobypass.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-nt.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-nt.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-nt.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-nt.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-nt.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-nt.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-nt.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-nt.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-nt.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/pipe-std.hcl:intsig E_icode 'id_ex_curr->icode'   # Instruction code
+./pipe/pipe-std.hcl:intsig E_ifun  'id_ex_curr->ifun'    # Instruction function
+./pipe/pipe-std.hcl:intsig E_valC  'id_ex_curr->valc'    # Constant data
+./pipe/pipe-std.hcl:intsig E_srcA  'id_ex_curr->srca'    # Source A register ID
+./pipe/pipe-std.hcl:intsig E_valA  'id_ex_curr->vala'    # Source A value
+./pipe/pipe-std.hcl:intsig E_srcB  'id_ex_curr->srcb'    # Source B register ID
+./pipe/pipe-std.hcl:intsig E_valB  'id_ex_curr->valb'    # Source B value
+./pipe/pipe-std.hcl:intsig E_dstE 'id_ex_curr->deste'    # Destination E register ID
+./pipe/pipe-std.hcl:intsig E_dstM 'id_ex_curr->destm'    # Destination M register ID
+./pipe/psim.c:                  id_ex_curr->stage_pc, id_ex_curr->status != STAT_BUB,
+./pipe/psim.c:            iname(HPACK(id_ex_curr->icode, id_ex_curr->ifun)),
+./pipe/psim.c:            id_ex_curr->valc, id_ex_curr->vala, id_ex_curr->valb,
+./pipe/psim.c:            reg_name(id_ex_curr->srca), reg_name(id_ex_curr->srcb),
+./pipe/psim.c:            reg_name(id_ex_curr->deste), reg_name(id_ex_curr->destm),
+./pipe/psim.c:            stat_name(id_ex_curr->status));
+./pipe/psim.c:        id_ex_curr->status = STAT_PIP;
+./pipe/psim.c:    if (id_ex_curr->status != STAT_AOK
+./pipe/psim.c:            && id_ex_curr->status != STAT_BUB) {
+./pipe/psim.c:    e_bcond = 	cond_holds(cc, id_ex_curr->ifun);
+./pipe/psim.c:    if (id_ex_curr->icode == I_JMP)
+./pipe/psim.c:                iname(HPACK(id_ex_curr->icode, id_ex_curr->ifun)),
+./pipe/psim.c:    ex_mem_next->icode = id_ex_curr->icode;
+./pipe/psim.c:    ex_mem_next->ifun = id_ex_curr->ifun;
+./pipe/psim.c:    ex_mem_next->destm = id_ex_curr->destm;
+./pipe/psim.c:    ex_mem_next->srca = id_ex_curr->srca;
+./pipe/psim.c:    ex_mem_next->status = id_ex_curr->status;
+./pipe/psim.c:    ex_mem_next->stage_pc = id_ex_curr->stage_pc;
+./pipe/pipe-full.c:    return (((id_ex_curr->icode) == (I_RRMOVL) || (id_ex_curr->icode) == 
+./pipe/pipe-full.c:        (I_ALU)) ? (id_ex_curr->vala) : ((id_ex_curr->icode) == (I_IRMOVL)
+./pipe/pipe-full.c:         || (id_ex_curr->icode) == (I_RMMOVL) || (id_ex_curr->icode) == 
+./pipe/pipe-full.c:        (I_MRMOVL) || (id_ex_curr->icode) == (I_IADDL) || 
+./pipe/pipe-full.c:        (id_ex_curr->icode) == (I_RMSWAP)) ? (id_ex_curr->valc) : (
+./pipe/pipe-full.c:        (id_ex_curr->icode) == (I_CALL) || (id_ex_curr->icode) == (I_PUSHL)
+./pipe/pipe-full.c:        ) ? -4 : ((id_ex_curr->icode) == (I_RET) || (id_ex_curr->icode) == 
+./pipe/pipe-full.c:        (I_POPL) || (id_ex_curr->icode) == (I_LEAVE)) ? 4 : 0);
+./pipe/pipe-full.c:    return (((id_ex_curr->icode) == (I_RMMOVL) || (id_ex_curr->icode) == 
+./pipe/pipe-full.c:        (I_MRMOVL) || (id_ex_curr->icode) == (I_ALU) || (id_ex_curr->icode)
+./pipe/pipe-full.c:         == (I_CALL) || (id_ex_curr->icode) == (I_PUSHL) || 
+./pipe/pipe-full.c:        (id_ex_curr->icode) == (I_RET) || (id_ex_curr->icode) == (I_POPL)
+./pipe/pipe-full.c:         || (id_ex_curr->icode) == (I_IADDL) || (id_ex_curr->icode) == 
+./pipe/pipe-full.c:        (I_LEAVE) || (id_ex_curr->icode) == (I_RMSWAP)) ? 
+./pipe/pipe-full.c:      (id_ex_curr->valb) : ((id_ex_curr->icode) == (I_RRMOVL) || 
+./pipe/pipe-full.c:        (id_ex_curr->icode) == (I_IRMOVL)) ? 0 : 0);
+./pipe/pipe-full.c:    return (((id_ex_curr->icode) == (I_ALU)) ? (id_ex_curr->ifun) : (A_ADD)
+./pipe/pipe-full.c:    return ((((id_ex_curr->icode) == (I_ALU) || (id_ex_curr->icode) == 
+./pipe/pipe-full.c:    return (id_ex_curr->vala);
+./pipe/pipe-full.c:    return ((((id_ex_curr->icode) == (I_RRMOVL)) & !
+./pipe/pipe-full.c:        (ex_mem_next->takebranch)) ? (REG_NONE) : (id_ex_curr->deste));
+./pipe/pipe-full.c:    return ((((id_ex_curr->icode) == (I_RMSWAP)) | (((id_ex_curr->icode)
+./pipe/pipe-full.c:             == (I_MRMOVL) || (id_ex_curr->icode) == (I_POPL) || 
+./pipe/pipe-full.c:            (id_ex_curr->icode) == (I_LEAVE)) & ((id_ex_curr->destm) == 
+./pipe/pipe-full.c:            (id_ex_next->srca) || (id_ex_curr->destm) == (id_ex_next->srcb)
+./pipe/pipe-full.c:        (id_ex_curr->icode) || (I_RET) == (ex_mem_curr->icode)));
+./pipe/pipe-full.c:    return (((id_ex_curr->icode) == (I_RMSWAP)) | (((id_ex_curr->icode) == 
+./pipe/pipe-full.c:          (I_MRMOVL) || (id_ex_curr->icode) == (I_POPL) || 
+./pipe/pipe-full.c:          (id_ex_curr->icode) == (I_LEAVE)) & ((id_ex_curr->destm) == 
+./pipe/pipe-full.c:          (id_ex_next->srca) || (id_ex_curr->destm) == (id_ex_next->srcb)))
+./pipe/pipe-full.c:    return ((((id_ex_curr->icode) == (I_JMP)) & !(ex_mem_next->takebranch))
+./pipe/pipe-full.c:       | (!(((id_ex_curr->icode) == (I_RMSWAP)) | (((id_ex_curr->icode) == 
+./pipe/pipe-full.c:              (I_MRMOVL) || (id_ex_curr->icode) == (I_POPL) || 
+./pipe/pipe-full.c:              (id_ex_curr->icode) == (I_LEAVE)) & ((id_ex_curr->destm) == 
+./pipe/pipe-full.c:              (id_ex_next->srca) || (id_ex_curr->destm) == 
+./pipe/pipe-full.c:          (I_RET) == (id_ex_curr->icode) || (I_RET) == (ex_mem_curr->icode)
+./pipe/pipe-full.c:    return (((((id_ex_curr->icode) == (I_JMP)) & !(ex_mem_next->takebranch)
+./pipe/pipe-full.c:          ) | ((id_ex_curr->icode) == (I_RMSWAP))) | (((id_ex_curr->icode)
+./pipe/pipe-full.c:           == (I_MRMOVL) || (id_ex_curr->icode) == (I_POPL) || 
+./pipe/pipe-full.c:          (id_ex_curr->icode) == (I_LEAVE)) & ((id_ex_curr->destm) == 
+./pipe/pipe-full.c:          (id_ex_next->srca) || (id_ex_curr->destm) == (id_ex_next->srcb)))
