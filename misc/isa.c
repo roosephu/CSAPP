@@ -10,7 +10,10 @@
 #include "isa.h"
 #include "lock.h"
 
-#define cerr(...) fprintf(stderr, __VA_ARGS__)
+FILE *fn;
+int my_id = -1;
+
+#define cerr(...) ({}) // fseek(fn, 0, SEEK_END), fprintf(fn, "ID %d: ", my_id), fflush(fn), fprintf(fn, __VA_ARGS__), fflush(fn)
 #define cfatal(...) fprintf(stder, __VA_ARGS__), assert(0);
 int cerr_log = 1;
 
@@ -168,6 +171,7 @@ phy_mem_t init_phy_mem()
 
 mem_t init_mem(int len, int reg)
 {
+    if (!fn) fn = stderr;
     cerr("--- init mem %x %d --- \n", len, reg);
     mem_t result = (mem_t) malloc(sizeof(mem_rec));
     len = ((len+BPL-1)/BPL)*BPL;
@@ -342,14 +346,13 @@ int load_mem(mem_t m, FILE *infile, int report_error)
     return byte_cnt;
 }
 
-int my_id = -1;
-
 void init_bus_id(mem_t mem) {
     lock_init();
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
     if (my_id == -1) {
         my_id = ++bus[0];
         cerr("--- find bus ---\n");
+        fn = fopen("/tmp/log", "w+");
     }
 }
 
@@ -358,10 +361,7 @@ void leave_bus(mem_t mem) {
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
     bus[4] |= 1 << my_id;
 
-    for (; !lock(); ) {
-        response(mem);
-        usleep(SLEEP_USEC);
-    }
+    lock(mem);
     int i, j;
     for (i = 0; i < NUM_SET; ++i)
         for (j = 0; j < NUM_BLK; ++j) {
@@ -381,16 +381,10 @@ void broadcast(mem_t mem, int type, int addr) {
     int value = PACK_BROADCAST(my_id, type, addr);
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
 
-    for ( ; !lock(); ) {
-        response(mem);
-        usleep(SLEEP_USEC);
-    }
-    bus[1] = value, bus[2] = 0, bus[3] = 1 << my_id;
+    bus[1] = value, bus[3] = 1 << my_id;
     cerr("--- broadcast %c 0x%.4x --- \n", type, addr);
-    for ( ; bus[2] != 1; )
+    for ( ; BROADCAST_TYPE(bus[1]) != 0; )
         usleep(SLEEP_USEC);
-    bus[1] = 0;
-    unlock();
     usleep(SLEEP_USEC);
 }
 
@@ -398,22 +392,22 @@ bool_t response(mem_t mem) {
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
 
     int broadcast = bus[1];
-    if (broadcast == 0)
+    word_t type = BROADCAST_TYPE(broadcast);
+    word_t addr = BROADCAST_ADDR(broadcast);
+    if (type == 0)
         return FALSE;
     if ((bus[3] >> my_id) != 1) {
-        word_t type = BROADCAST_TYPE(broadcast);
-        word_t addr = BROADCAST_ADDR(broadcast);
-        assert(addr >= SHARED_MEM_POS);
         cerr("--- response: %c 0x%.4x ", type, addr - ADDR_OFFSET(addr));
+        assert(addr >= SHARED_MEM_POS);
         cache_blk_t blk = find_cache_blk(mem->aux->cache, addr);
 
         if (blk != NULL) {
+            cerr("and check flag (V: %x, D: %x, T: %.3x) ---\n",
+                IS_VALID(blk), IS_DIRTY(blk), GET_TAG(blk));
             if (type == 'W') {
-                cerr("and invalidate block ---\n");
+                cerr("--- invalidate block ---\n");
                 SET_INVALID(blk);
             } else if (type == 'R')  {
-                cerr("and check flag (V: %x, D: %x, T: %.3x) ---\n",
-                    IS_VALID(blk), IS_DIRTY(blk), GET_TAG(blk));
                 if (IS_DIRTY(blk)) {
                     commit_cache(mem, blk, addr);
                 }
@@ -475,22 +469,11 @@ void commit_cache(mem_t mem, cache_blk_t blk, word_t addr) {
     if (addr >= SHARED_MEM_POS)
         memcpy(mem->aux->shared + addr - SHARED_MEM_POS, blk->contents, BLK_SIZE);
     else
-        memcpy(mem->contents + addr, blk->contents, sizeof(BLK_SIZE));
+        memcpy(mem->contents + addr, blk->contents, BLK_SIZE);
     UNSET_DIRTY(blk);
 }
 
-bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
-{
-    if (pos < 0 || pos >= m->len)
-        return FALSE;
-    else if (!m->aux) {
-        *dest = m->contents[pos];
-        return TRUE;
-    } else if (pos >= BUS_MEM_POS) {
-        *dest = m->aux->shared[pos - SHARED_MEM_POS];
-        return TRUE;
-    }
-
+void get_byte_val_shared(mem_t m, word_t pos, byte_t *dest) {
     cache_t c = m->aux->cache;
     cache_blk_t blk = find_cache_blk(c, pos);
 
@@ -502,52 +485,57 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 
     if (cerr_log && pos > 0x100)
         cerr("--- get byte val (type: %d, pos: %x, val: %02x) READ %s --- \n", m->aux != 0, pos, *dest, hit ? "HIT" : "MISS");
+}
+
+bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest) {
+    if (pos < 0 || pos >= m->len)
+        return FALSE;
+    else if (!m->aux) {
+        *dest = m->contents[pos];
+        return TRUE;
+    } else if (pos >= BUS_MEM_POS) {
+        *dest = m->aux->shared[pos - SHARED_MEM_POS];
+        return TRUE;
+    }
+    lock(m);
+    get_byte_val_shared(m, pos, dest);
+    unlock();
     return TRUE;
 }
 
-bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
+void get_word_val_shared(mem_t m, word_t pos, word_t *dest)
 {
+
+    cerr_log = FALSE;
+
     word_t val = 0;
+    int i; byte_t b = 0;
+    for (i = 0; i < 4; ++i) {
+        get_byte_val_shared(m, pos + i, &b);
+        val = val | ((word_t)b << (i * 8));
+    }
+    *dest = val;
+
+    if (pos > 0x100)
+        cerr("--- get word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, *dest);
+    cerr_log = TRUE;
+}
+
+bool_t get_word_val(mem_t m, word_t pos, word_t *dest) {
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
     else if (!m->aux) {
         *dest = *(int *)(m->contents + pos);
         return TRUE;
-    } else if (pos >= BUS_MEM_POS) {
-        *dest = *(int *)(m->aux->shared + pos - SHARED_MEM_POS);
-        cerr("GET bus 0x%04x: 0x%08x\n", pos, *dest);
-        return TRUE;
     }
 
-    if (pos > 0x100)
-        cerr("--- get word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, *dest);
-
-    response(m);
-    cerr_log = FALSE;
-    int i; byte_t b = 0;
-    for (i = 0; i < 4; ++i) {
-        get_byte_val(m, pos + i, &b);
-        val = val | ((word_t)b << (i * 8));
-    }
-    *dest = val;
-
-    cerr_log = TRUE;
+    lock(m);
+    get_word_val_shared(m, pos, dest);
+    unlock();
     return TRUE;
 }
 
-bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
-{
-    if (pos < 0 || pos >= m->len)
-        return FALSE;
-    else if (!m->aux) {
-        m->contents[pos] = val;
-        return TRUE;
-    } else if (pos >= BUS_MEM_POS) {
-        m->aux->shared[pos - SHARED_MEM_POS] = val;
-        return TRUE;
-    }
-
-    response(m);
+void set_byte_val_shared(mem_t m, word_t pos, byte_t val) {
     cache_t c = m->aux->cache;
 
     cache_blk_t blk = find_cache_blk(c, pos);
@@ -563,31 +551,61 @@ bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
     cerr("--- set block 0x%.4x DIRTY --- \n", pos - ADDR_OFFSET(pos));
     blk->contents[ADDR_OFFSET(pos)] = val;
     SET_DIRTY(blk);
+}
 
+bool_t set_byte_val(mem_t m, word_t pos, byte_t val) {
+    if (pos < 0 || pos >= m->len)
+        return FALSE;
+    else if (!m->aux) {
+        m->contents[pos] = val;
+        return TRUE;
+    }
+
+    lock(m);
+    set_byte_val_shared(m, pos, val);
+    unlock();
     return TRUE;
 }
 
-bool_t set_word_val(mem_t m, word_t pos, word_t val)
+void set_word_val_shared(mem_t m, word_t pos, word_t val)
 {
     int i;
+
+    cerr("--- set word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, val);
+    cerr_log = FALSE;
+    for (i = 0; i < 4; ++i) {
+        set_byte_val_shared(m, pos + i, val & 0xFF);
+        val >>= 8;
+    }
+    cerr_log = TRUE;
+}
+
+bool_t set_word_val(mem_t m, word_t pos, word_t val) {
     if (pos < 0 || pos + 4 > m->len)
         return FALSE;
     else if (!m->aux) {
         *(int *)(m->contents + pos) = val;
         return TRUE;
-    } else if (pos >= BUS_MEM_POS) {
-        *(int *)(m->aux->shared + pos) = val;
+    }
+
+    lock(m);
+    set_word_val_shared(m, pos, val);
+    unlock();
+    return TRUE;
+}
+
+bool_t get_and_set_word_val(mem_t m, word_t pos, word_t *dest, word_t val) {
+    if (pos < 0 || pos + 4 > m->len)
+        return FALSE;
+    else if (!m->aux) {
+        *(int *)(m->contents + pos) = val;
         return TRUE;
     }
 
-    response(m);
-    cerr("--- set word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, val);
-    cerr_log = FALSE;
-    for (i = 0; i < 4; ++i) {
-        set_byte_val(m, pos + i, val & 0xFF);
-        val >>= 8;
-    }
-    cerr_log = TRUE;
+    lock(m);
+    get_word_val_shared(m, pos, dest);
+    set_word_val_shared(m, pos, val);
+    unlock();
     return TRUE;
 }
 

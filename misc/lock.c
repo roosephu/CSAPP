@@ -9,10 +9,14 @@ void lock_init() {
     fd[1] = open(LOCK_FN_B     , O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
 }
 
-bool_t lock() {
-    int res = flock(fd[1], LOCK_EX | LOCK_NB) == 0;
-    cerr("--- acquire lock: %s ---\n", res ? "YES" : "NO");
-    return res;
+bool_t lock(mem_t mem) {
+    cerr("--- acquiring lock ---\n");
+    while (flock(fd[1], LOCK_EX | LOCK_NB) != 0) {
+        response(mem);
+        usleep(SLEEP_USEC);
+    }
+    cerr("--- acquired lock ---\n");
+    return TRUE;
     // flock(fd[0], LOCK_UN);
 }
 

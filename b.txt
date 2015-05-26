@@ -1,0 +1,145 @@
+--- init mem 10000 0 --- 
+--- init mem 20 1 --- 
+--- init mem 10000 0 --- 
+--- init mem 20 1 --- 
+--- find bus ---
+......................................
+--- acquiring lock ---
+--- acquired lock ---
+--- load cache at 0x0000 ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- load cache at 0x0010 ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+......................................
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock ---
+--- acquired lock ---
+--- get word val (type: 1, pos: 4000, val: 00000000) --- 
+--- acquiring lock ---
+--- acquired lock ---
+--- broadcast R 0x4000 --- 

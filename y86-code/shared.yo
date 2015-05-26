@@ -6,79 +6,90 @@
                        | 
   0x000c:f01000000000  |   rmswap %ecx, (%eax)
   0x0012:10            |   nop                      # ecx needs a round to write back
-  0x0013:30f605000000  |   irmovl 0x5, %esi
+  0x0013:30f609000000  |   irmovl 0x9, %esi
   0x0019:30f701000000  |   irmovl 0x1, %edi
   0x001f:6211          |   andl   %ecx, %ecx
   0x0021:30f201000000  |   irmovl 0x1, %edx
   0x0027:6312          |   xorl   %ecx, %edx        # edx = *eax ^ 1
+  0x0029:402010000000  |   rmmovl %edx, 0x10(%eax)
                        | 
-  0x0029:30f400080000  |   irmovl stack, %esp       # set up stack
-  0x002f:30f500080000  |   irmovl stack, %ebp
+  0x002f:30f400080000  |   irmovl stack, %esp       # set up stack
+  0x0035:30f500080000  |   irmovl stack, %ebp
                        | 
-  0x0035:              | loop:
-  0x0035:a00f          |   pushl  %eax
-  0x0037:a02f          |   pushl  %edx
-  0x0039:8063000000    |   call   lock
-  0x003e:b02f          |   popl   %edx
-  0x0040:b02f          |   popl   %edx
+  0x003b:              | loop:
+  0x003b:a00f          |   pushl  %eax
+  0x003d:806b000000    |   call   lock
+  0x0042:b00f          |   popl   %eax
                        | 
-  0x0042:a00f          |   pushl  %eax
-  0x0044:a02f          |   pushl  %edx
-  0x0046:a01f          |   pushl  %ecx
-  0x0048:8086000000    |   call   incdata           # lock obtained
-  0x004d:b01f          |   popl   %ecx
-  0x004f:b02f          |   popl   %edx
-  0x0051:b00f          |   popl   %eax
+  0x0044:a00f          |   pushl  %eax
+  0x0046:a02f          |   pushl  %edx
+  0x0048:a01f          |   pushl  %ecx
+  0x004a:808b000000    |   call   incdata           # lock obtained
+  0x004f:b01f          |   popl   %ecx
+  0x0051:b02f          |   popl   %edx
+  0x0053:b00f          |   popl   %eax
                        | 
-  0x0053:6176          |   subl   %edi, %esi
-  0x0055:401000000000  |   rmmovl %ecx, (%eax)
-  0x005b:6266          |   andl   %esi, %esi
-  0x005d:7435000000    |   jne    loop
+  0x0055:401010000000  |   rmmovl %ecx, 0x10(%eax)    # release lock
                        | 
-  0x0062:              | end:
-  0x0062:00            |   halt
+  0x005b:30f701000000  |   irmovl 0x1, %edi
+  0x0061:6176          |   subl   %edi, %esi
+  0x0063:6266          |   andl   %esi, %esi
+  0x0065:743b000000    |   jne    loop
                        | 
-  0x0063:              | lock:                      # while (*eax != edx)
-  0x0063:a05f          |   pushl  %ebp
-  0x0065:2045          |   rrmovl %esp, %ebp
+  0x006a:              | end:
+  0x006a:00            |   halt
                        | 
-  0x0067:              | L2:
-  0x0067:30f010400000  |   irmovl 0x4010, %eax
-  0x006d:30f201000000  |   irmovl 0x1, %edx
-  0x0073:f02000000000  |   rmswap %edx, (%eax)
-  0x0079:10            |   nop
-  0x007a:6222          |   andl   %edx, %edx
-  0x007c:7367000000    |   je     L2
+  0x006b:              | lock:                      # while (*eax != edx)
+  0x006b:a05f          |   pushl  %ebp
+  0x006d:2045          |   rrmovl %esp, %ebp
+  0x006f:a07f          |   pushl  %edi
                        | 
-  0x0081:2054          |   rrmovl %ebp, %esp
-  0x0083:b05f          |   popl   %ebp
-  0x0085:90            |   ret
+  0x0071:              | L2:
+  0x0071:30f010400000  |   irmovl 0x4010, %eax
+  0x0077:507000000000  |   mrmovl (%eax), %edi
+  0x007d:6327          |   xorl   %edx, %edi
+  0x007f:7471000000    |   jne    L2
                        | 
-  0x0086:              | incdata:
-  0x0086:a05f          |   pushl  %ebp
-  0x0088:2045          |   rrmovl %esp, %ebp
-  0x008a:a07f          |   pushl  %edi
+  0x0084:b07f          |   popl   %edi
+  0x0086:2054          |   rrmovl %ebp, %esp
+  0x0088:b05f          |   popl   %ebp
+  0x008a:90            |   ret
                        | 
-  0x008c:30f040400000  |   irmovl 0x4040, %eax
-  0x0092:502000000000  |   mrmovl (%eax), %edx
+  0x008b:              | incdata:
+  0x008b:a05f          |   pushl  %ebp
+  0x008d:2045          |   rrmovl %esp, %ebp
+  0x008f:a07f          |   pushl  %edi
+  0x0091:a06f          |   pushl  %esi
                        | 
-  0x0098:              | L3:
-  0x0098:501000000000  |   mrmovl (%eax), %ecx
-  0x009e:c0f101000000  |   iaddl  0x1, %ecx
-  0x00a4:401000000000  |   rmmovl %ecx, (%eax)
-  0x00aa:c0f004000000  |   iaddl  0x4, %eax
-  0x00b0:6222          |   andl   %edx, %edx
-  0x00b2:73c4000000    |   je     L4
+  0x0093:30f040400000  |   irmovl 0x4040, %eax
+  0x0099:501000000000  |   mrmovl (%eax), %ecx
+  0x009f:c0f101000000  |   iaddl  0x1, %ecx
+  0x00a5:401000000000  |   rmmovl %ecx, (%eax)
+  0x00ab:506508000000  |   mrmovl 8(%ebp), %esi
                        | 
-  0x00b7:30f701000000  |   irmovl 0x1, %edi
-  0x00bd:6172          |   subl   %edi, %edx
-  0x00bf:7098000000    |   jmp    L3
+  0x00b1:              | L4:
+  0x00b1:c0f004000000  |   iaddl  0x4, %eax
+  0x00b7:502000000000  |   mrmovl (%eax), %edx
+  0x00bd:6266          |   andl   %esi, %esi        # if pid == 0 : *= 2 else += 1
+  0x00bf:74cf000000    |   jne    L5
+  0x00c4:c0f201000000  |   iaddl  0x1, %edx
+  0x00ca:70d1000000    |   jmp    L6
                        | 
-  0x00c4:              | L4:
-  0x00c4:b07f          |   popl   %edi
-  0x00c6:2054          |   rrmovl %ebp, %esp
-  0x00c8:b05f          |   popl   %ebp
-  0x00ca:90            |   ret
+  0x00cf:              | L5:
+  0x00cf:6022          |   addl   %edx, %edx
+                       | 
+  0x00d1:              | L6:
+  0x00d1:402000000000  |   rmmovl %edx, (%eax)
+  0x00d7:30f701000000  |   irmovl 0x1, %edi
+  0x00dd:6171          |   subl   %edi, %ecx
+  0x00df:6211          |   andl   %ecx, %ecx
+  0x00e1:74b1000000    |   jne    L4
+                       | 
+  0x00e6:b06f          |   popl   %esi
+  0x00e8:b07f          |   popl   %edi
+  0x00ea:2054          |   rrmovl %ebp, %esp
+  0x00ec:b05f          |   popl   %ebp
+  0x00ee:90            |   ret
                        | 
   0x0800:              |   .pos 0x800
   0x0800:              | stack:

@@ -1,0 +1,5205 @@
+--- init mem 10000 0 --- 
+--- init mem 20 1 --- 
+--- init mem 10000 0 --- 
+--- init mem 20 1 --- 
+--- find bus ---
+......................................
+--- acquiring lock... done ---
+--- load cache at 0x0000 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4000, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4000 --- 
+--- load cache at 0x4000 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4000, val: 00000003) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4000, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- set word val (type: 1, pos: 4000, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4000 --- 
+--- set block 0x4000 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4001 --- 
+--- set block 0x4000 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4002 --- 
+--- set block 0x4000 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4003 --- 
+--- set block 0x4000 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... --- response: R 0x4000 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4000 ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4000 and invalidate block ---
+--- response: W 0x4000 but no block found ---
+--- response: W 0x4000 but no block found ---
+--- response: W 0x4000 but no block found ---
+done ---
+--- load cache at 0x0020 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0030 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- load cache at 0x0060 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- load cache at 0x07f0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7fc, val: 00004000) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0070 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f8, val: 00000001) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00004010) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f4, val: 0000003e) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f0, val: 00000800) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0080 ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4010 --- 
+--- load cache at 0x4010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- set word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4010 and invalidate block ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- broadcast R 0x4010 --- 
+--- load cache at 0x4010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- set word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0090 ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 0000008c) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7fc, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f8, val: 00004000) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f0, val: 0000004d) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7ec, val: 00000000) --- 
+--- acquiring lock... done ---
+--- load cache at 0x07e0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7ec, val: 00000800) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7e8, val: 00000001) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x00a0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e4, val: 00000004) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7e4, val: 00000003) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x00b0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 0, T: 080) ---
+done ---
+--- load cache at 0x00c0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x00d0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4040, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4040 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4041 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4042 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4043 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x00e0 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7ec, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+--- response: R 0x4040 and check flag (V: 1, D: 0, T: 080) ---
+--- response: W 0x4040 and invalidate block ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- load cache at 0x0050 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000035) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+--- response: W 0x4010 and invalidate block ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7fc, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f8, val: 00004000) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00004010) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f4, val: 0000003e) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f0, val: 00000800) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4010 --- 
+--- load cache at 0x4010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- set word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+done ---
+--- release lock: YES ---
+--- set word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+--- response: R 0x4010 and check flag (V: 1, D: 0, T: 080) ---
+--- response: W 0x4010 and invalidate block ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 0000008c) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7fc, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f8, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f0, val: 0000004d) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7ec, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7ec, val: 00000800) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7e8, val: 00000001) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e4, val: 00000004) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7e4, val: 00000002) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4040 and invalidate block ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4040, val: 00000002) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4040 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+done ---
+--- broadcast W 0x4041 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+done ---
+--- broadcast W 0x4042 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4043 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+--- response: W 0x4040 and invalidate block ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4044, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4040 and invalidate block ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4044, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4044, val: 00000002) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4044 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4045 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4046 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4047 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... --- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7ec, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000035) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4010 --- 
+--- load cache at 0x4010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+--- response: W 0x4010 and invalidate block ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7fc, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f8, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00004010) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f4, val: 0000003e) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f0, val: 00000800) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4010 --- 
+--- load cache at 0x4010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- set word val (type: 1, pos: 4010, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 0000008c) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7fc, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f8, val: 00004010) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7f0, val: 0000004d) --- 
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07f0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7ec, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7ec, val: 00000800) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4040 and invalidate block ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7e8, val: 00000001) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e4, val: 00000004) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 7e4, val: 00000001) --- 
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- set block 0x07e0 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: W 0x4040 and invalidate block ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4040, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4040, val: 00000004) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4040 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4041 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4042 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4043 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4044, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4044, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4044, val: 00000004) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4044 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4045 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4046 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4047 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... --- response: R 0x4040 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4040 ---
+--- response: W 0x4040 and invalidate block ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+--- response: W 0x4040 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4048, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4040 --- 
+--- load cache at 0x4040 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4048, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4048, val: 00000002) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4048 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4049 --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x404a --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x404b --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... --- response: R 0x4010 and check flag (V: 1, D: 1, T: 080) ---
+--- commit memory 0x4010 ---
+--- response: W 0x4010 and invalidate block ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+--- response: W 0x4010 but no block found ---
+done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 404c, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 404c, val: 000000e0) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 404c, val: 00000001) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x404c --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x404d --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x404e --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x404f --- 
+--- set block 0x4040 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7e8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7ec, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f0, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f4, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7f8, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 7fc, val: 00000000) --- 
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- get word val (type: 1, pos: 4010, val: 00000035) --- 
+--- acquiring lock... done ---
+--- broadcast R 0x4010 --- 
+--- load cache at 0x4010 ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- set word val (type: 1, pos: 4010, val: 00000000) --- 
+--- acquiring lock... done ---
+--- broadcast W 0x4010 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4011 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4012 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- broadcast W 0x4013 --- 
+--- set block 0x4010 DIRTY --- 
+--- release lock: YES ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+......................................
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- acquiring lock... done ---
+--- release lock: YES ---
+--- release lock: YES ---
+--- leave bus and commit all caches ---
+--- acquiring lock... done ---
+--- commit memory 0x4010 ---
+--- commit memory 0x4040 ---
+--- commit memory 0x07e0 ---
+--- commit memory 0x07f0 ---
+--- release lock: YES ---

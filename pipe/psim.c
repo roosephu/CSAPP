@@ -339,7 +339,7 @@ word_t wb_valM = 0;
 word_t mem_addr = 0;
 word_t mem_data = 0;
 bool_t mem_write = FALSE;
-bool_t update_reg = FALSE;
+bool_t mem_upd_reg = FALSE;
 
 /* EX Operand sources */
 mux_source_t amux = MUX_NONE;
@@ -628,8 +628,9 @@ static void update_state(bool_t update_mem, bool_t update_cc)
     */
 
     if (wb_destE != REG_NONE) {
-        if (update_reg) {
-            get_word_val(mem, mem_addr, &wb_valE);
+        if (mem_upd_reg) {
+            // get_word_val(mem, mem_addr, &wb_valE);
+            get_and_set_word_val(mem, mem_addr, &wb_valE, mem_data);
             // cerr("\tMemory get: 0x%x of value 0x%x\n", mem_addr, wb_valE);
         }
         sim_log("\tWriteback: Wrote 0x%x to register %s\n",
@@ -651,7 +652,7 @@ static void update_state(bool_t update_mem, bool_t update_cc)
         sim_log("\tDisabled write of 0x%x to address 0x%x\n", mem_data, mem_addr);
     }
     if (update_mem && mem_write) {
-        if (!set_word_val(mem, mem_addr, mem_data)) {
+        if (!mem_upd_reg && !set_word_val(mem, mem_addr, mem_data)) {
             sim_log("\tCouldn't write to address 0x%x\n", mem_addr);
         } else {
             sim_log("\tWrote 0x%x to address 0x%x\n", mem_data, mem_addr);
@@ -1615,9 +1616,9 @@ void do_mem_stage()
                     mem_addr);
     }
     if (read && mem_write) {
-        update_reg = TRUE;
+        mem_upd_reg = TRUE;
     } else {
-        update_reg = FALSE;
+        mem_upd_reg = FALSE;
     }
     mem_wb_next->icode = ex_mem_curr->icode;
     mem_wb_next->ifun = ex_mem_curr->ifun;

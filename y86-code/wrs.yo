@@ -1,0 +1,50 @@
+  0x0000:              | .pos 0
+                       | 
+  0x0000:              | start:
+  0x0000:30f000200000  |     irmovl $0x2000, %eax
+  0x0006:30f301000000  |     irmovl $1, %ebx
+  0x000c:30f100000000  |     irmovl $0, %ecx
+  0x0012:f03000000000  |     rmswap %ebx, 0(%eax)
+  0x0018:6131          |     subl %ebx, %ecx
+  0x001a:7324000000    |     je lock_obtained
+  0x001f:7400000000    |     jne start
+                       | 
+  0x0024:              | lock_obtained:
+  0x0024:30f200100000  |     irmovl $0x1000, %edx
+  0x002a:507200000000  |     mrmovl (%edx), %edi
+  0x0030:30f601000000  |     irmovl $1, %esi
+  0x0036:30f0a0860100  |     irmovl $100000, %eax
+  0x003c:6170          |     subl %edi, %eax
+  0x003e:736f000000    |     je end
+  0x0043:6067          |     addl %esi, %edi
+  0x0045:407200000000  |     rmmovl %edi, (%edx)
+                       | 
+  0x004b:              | give_back:
+  0x004b:30f000200000  |     irmovl $0x2000, %eax
+  0x0051:30f100000000  |     irmovl $0, %ecx
+  0x0057:f01000000000  |     rmswap %ecx, (%eax)
+  0x005d:30f301000000  |     irmovl $1, %ebx
+  0x0063:6131          |     subl %ebx, %ecx
+  0x0065:7300000000    |     je start
+  0x006a:744b000000    |     jne give_back
+                       | 
+  0x006f:              | end:
+  0x006f:500fd4070000  |     mrmovl $2004, %eax
+  0x0075:30f301000000  |     irmovl $1, %ebx
+  0x007b:6103          |     subl %eax, %ebx
+  0x007d:73a6000000    |     je go_halt
+  0x0082:30f000200000  |     irmovl $0x2000, %eax
+  0x0088:30f100000000  |     irmovl $0, %ecx
+  0x008e:f01000000000  |     rmswap %ecx, (%eax)
+  0x0094:30f301000000  |     irmovl $1, %ebx
+  0x009a:6131          |     subl %ebx, %ecx
+  0x009c:73a6000000    |     je go_halt
+  0x00a1:746f000000    |     jne end
+                       | 
+  0x00a6:              | go_halt:
+  0x00a6:30f001000000  |     irmovl $1, %eax
+  0x00ac:30f304200000  |     irmovl $0x2004, %ebx
+  0x00b2:f00300000000  |     rmswap %eax, (%ebx)
+  0x00b8:00            |     halt
+                       | 
+  0x1000:              | .pos 0x1000

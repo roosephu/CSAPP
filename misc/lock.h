@@ -13,6 +13,6 @@
 #define LOCK_FN_COMMON "/tmp/y86-lock-run"
 
 void lock_init();
-bool_t lock();
+bool_t lock(mem_t);
 void unlock();
 #endif

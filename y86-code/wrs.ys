@@ -1,0 +1,50 @@
+.pos 0
+
+start:
+    irmovl $0x2000, %eax
+    irmovl $1, %ebx
+    irmovl $0, %ecx
+    rmswap %ebx, 0(%eax)
+    subl %ebx, %ecx
+    je lock_obtained
+    jne start
+
+lock_obtained:
+    irmovl $0x1000, %edx
+    mrmovl (%edx), %edi
+    irmovl $1, %esi
+    irmovl $100000, %eax
+    subl %edi, %eax
+    je end
+    addl %esi, %edi
+    rmmovl %edi, (%edx)
+
+give_back:
+    irmovl $0x2000, %eax
+    irmovl $0, %ecx
+    rmswap %ecx, (%eax)
+    irmovl $1, %ebx
+    subl %ebx, %ecx
+    je start
+    jne give_back
+
+end:
+    mrmovl $2004, %eax
+    irmovl $1, %ebx
+    subl %eax, %ebx
+    je go_halt
+    irmovl $0x2000, %eax
+    irmovl $0, %ecx
+    rmswap %ecx, (%eax)
+    irmovl $1, %ebx
+    subl %ebx, %ecx
+    je go_halt
+    jne end
+
+go_halt:
+    irmovl $1, %eax
+    irmovl $0x2004, %ebx
+    rmswap %eax, (%ebx)
+    halt
+
+.pos 0x1000

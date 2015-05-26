@@ -36,17 +36,19 @@ int main()
 
     for ( ; bus[4] != (mask << 1); usleep(33)) {
         int broadcast = bus[1];
-        if (broadcast != 0) {
+        if (BROADCAST_TYPE(broadcast) != 0) {
             printf("Find a broadcast...0x%.8x\n", broadcast);
             for ( ; (bus[3] | bus[4]) != (mask << 1); )
                 usleep(3);
-            bus[2] = 1;
+            bus[1] = 0;
         }
     }
     printf("Clients have already exited...\n");
-    for (i = 0; i < SHARED_MEM_SIZE; ++i) {
-        if (shared[i] != 0) {
-            printf("Final 0x%.4x: 0x%.8x\n", i, shared[i]);
+
+    int *ptr = (int *)shared;
+    for (i = 0; i < SHARED_MEM_SIZE / 4; ++i) {
+        if (ptr[i] != 0) {
+            printf("Final 0x%.4x: 0x%.8x\n", i, ptr[i]);
         }
     }
 

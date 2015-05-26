@@ -62,14 +62,9 @@ incdata:
   pushl  %esi
 
   irmovl 0x4040, %eax
-  mrmovl (%eax), %ecx
-  iaddl  0x1, %ecx
-  rmmovl %ecx, (%eax)
+  mrmovl (%eax), %edx
   mrmovl 8(%ebp), %esi
 
-L4:
-  iaddl  0x4, %eax
-  mrmovl (%eax), %edx
   andl   %esi, %esi        # if pid == 0 : *= 2 else += 1
   jne    L5
   iaddl  0x1, %edx
@@ -80,10 +75,6 @@ L5:
 
 L6:
   rmmovl %edx, (%eax)
-  irmovl 0x1, %edi
-  subl   %edi, %ecx
-  andl   %ecx, %ecx
-  jne    L4
 
   popl   %esi
   popl   %edi

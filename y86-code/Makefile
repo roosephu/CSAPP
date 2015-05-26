@@ -8,7 +8,7 @@ PIPE=../pipe/psim
 SEQ=../seq/ssim
 SEQ+ =../seq/ssim+
 
-YOFILES = abs-asum-cmov.yo abs-asum-jmp.yo asum.yo asumr.yo asumi.yo asuml.yo cjr.yo j-cc.yo poptest.yo pushquestion.yo pushtest.yo prog1.yo prog2.yo prog3.yo prog4.yo prog5.yo prog6.yo prog7.yo prog8.yo prog9.yo prog10.yo ret-hazard.yo rmswap.yo shared.yo
+YOFILES = abs-asum-cmov.yo abs-asum-jmp.yo asum.yo asumr.yo asumi.yo asuml.yo cjr.yo j-cc.yo poptest.yo pushquestion.yo pushtest.yo prog1.yo prog2.yo prog3.yo prog4.yo prog5.yo prog6.yo prog7.yo prog8.yo prog9.yo prog10.yo ret-hazard.yo rmswap.yo shared.yo wrs.yo
 
 PIPEFILES = asum.pipe asumr.pipe cjr.pipe j-cc.pipe poptest.pipe pushquestion.pipe pushtest.pipe prog1.pipe prog2.pipe prog3.pipe prog4.pipe prog5.pipe prog6.pipe prog7.pipe prog8.pipe ret-hazard.pipe
 
