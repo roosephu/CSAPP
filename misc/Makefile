@@ -6,7 +6,7 @@ YACC=bison
 LEXLIB = -lfl
 YAS=./yas
 
-all: yis yas hcl2c bus
+all: yis yas hcl2c bus lock.o
 
 # These are implicit rules for making .yo files from .ys files.
 # E.g., make sum.yo
@@ -55,8 +55,11 @@ lex.yy.c: hcl.lex
 hcl.tab.c: hcl.y
 	$(YACC) -d hcl.y
 
+lock.o: lock.c
+	$(CC) $(CFLAGS) -c lock.c
+
 bus: bus.c
-	$(CC) $(CFLAGS) -c bus.c
+	$(CC) $(CFLAGS) bus.c -o bus
 
 clean:
 	rm -f *.o *.yo *.exe yis yas hcl2c mux4 *~ core.*

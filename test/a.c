@@ -25,7 +25,7 @@ void lock_init() {
 }
 
 void lock() {
-    flock(fd[1], LOCK_EX);
+    return flock(fd[1], LOCK_EX | LOCK_NB);;
     flock(fd[0], LOCK_UN);
 }
 

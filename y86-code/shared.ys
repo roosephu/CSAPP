@@ -6,24 +6,79 @@
 
   rmswap %ecx, (%eax)
   nop                      # ecx needs a round to write back
+  irmovl 0x5, %esi
+  irmovl 0x1, %edi
   andl   %ecx, %ecx
   irmovl 0x1, %edx
   xorl   %ecx, %edx        # edx = *eax ^ 1
 
-end:
-  # set up stack
-  irmovl stack, %esp
+  irmovl stack, %esp       # set up stack
   irmovl stack, %ebp
 
-lock:                      # while (*eax != edx)
-  mrmovl (%eax), %ebx
-  xorl %edx, %ebx
-  jne lock
+loop:
+  pushl  %eax
+  pushl  %edx
+  call   lock
+  popl   %edx
+  popl   %edx
 
-# lock obtained
-  iaddl  0x1, %esi
+  pushl  %eax
+  pushl  %edx
+  pushl  %ecx
+  call   incdata           # lock obtained
+  popl   %ecx
+  popl   %edx
+  popl   %eax
+
+  subl   %edi, %esi
   rmmovl %ecx, (%eax)
-  jmp lock
+  andl   %esi, %esi
+  jne    loop
+
+end:
+  halt
+
+lock:                      # while (*eax != edx)
+  pushl  %ebp
+  rrmovl %esp, %ebp
+
+L2:
+  irmovl 0x4010, %eax
+  irmovl 0x1, %edx
+  rmswap %edx, (%eax)
+  nop
+  andl   %edx, %edx
+  je     L2
+
+  rrmovl %ebp, %esp
+  popl   %ebp
+  ret
+
+incdata:
+  pushl  %ebp
+  rrmovl %esp, %ebp
+  pushl  %edi
+
+  irmovl 0x4040, %eax
+  mrmovl (%eax), %edx
+
+L3:
+  mrmovl (%eax), %ecx
+  iaddl  0x1, %ecx
+  rmmovl %ecx, (%eax)
+  iaddl  0x4, %eax
+  andl   %edx, %edx
+  je     L4
+
+  irmovl 0x1, %edi
+  subl   %edi, %edx
+  jmp    L3
+
+L4:
+  popl   %edi
+  rrmovl %ebp, %esp
+  popl   %ebp
+  ret
 
   .pos 0x800
 stack:

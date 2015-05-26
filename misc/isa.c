@@ -345,6 +345,7 @@ int load_mem(mem_t m, FILE *infile, int report_error)
 int my_id = -1;
 
 void init_bus_id(mem_t mem) {
+    lock_init();
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
     if (my_id == -1) {
         my_id = ++bus[0];
@@ -353,9 +354,14 @@ void init_bus_id(mem_t mem) {
 }
 
 void leave_bus(mem_t mem) {
+    cerr("--- leave bus and commit all caches ---\n");
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
     bus[4] |= 1 << my_id;
 
+    for (; !lock(); ) {
+        response(mem);
+        usleep(SLEEP_USEC);
+    }
     int i, j;
     for (i = 0; i < NUM_SET; ++i)
         for (j = 0; j < NUM_BLK; ++j) {
@@ -365,6 +371,7 @@ void leave_bus(mem_t mem) {
                 commit_cache(mem, blk, addr);
             }
         }
+    unlock();
 }
 
 void broadcast(mem_t mem, int type, int addr) {
@@ -374,13 +381,17 @@ void broadcast(mem_t mem, int type, int addr) {
     int value = PACK_BROADCAST(my_id, type, addr);
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
 
-    for ( ; response(mem); )
+    for ( ; !lock(); ) {
+        response(mem);
         usleep(SLEEP_USEC);
+    }
     bus[1] = value, bus[2] = 0, bus[3] = 1 << my_id;
-    cerr("--- broadcast %c 0x%.4x\n", type, addr);
+    cerr("--- broadcast %c 0x%.4x --- \n", type, addr);
     for ( ; bus[2] != 1; )
         usleep(SLEEP_USEC);
     bus[1] = 0;
+    unlock();
+    usleep(SLEEP_USEC);
 }
 
 bool_t response(mem_t mem) {
@@ -392,19 +403,24 @@ bool_t response(mem_t mem) {
     if ((bus[3] >> my_id) != 1) {
         word_t type = BROADCAST_TYPE(broadcast);
         word_t addr = BROADCAST_ADDR(broadcast);
-        if (addr >= SHARED_MEM_POS) {
-            cache_blk_t blk = find_cache_blk(mem->aux->cache, addr);
+        assert(addr >= SHARED_MEM_POS);
+        cerr("--- response: %c 0x%.4x ", type, addr - ADDR_OFFSET(addr));
+        cache_blk_t blk = find_cache_blk(mem->aux->cache, addr);
+
+        if (blk != NULL) {
             if (type == 'W') {
-                if (blk != NULL)
-                    SET_INVALID(blk);
+                cerr("and invalidate block ---\n");
+                SET_INVALID(blk);
             } else if (type == 'R')  {
-                cerr("--- check block 0x%.4x with flag %.8x ---\n", addr - ADDR_OFFSET(addr), (blk ? blk->flag : -1));
-                if (blk != NULL && IS_DIRTY(blk)) {
+                cerr("and check flag (V: %x, D: %x, T: %.3x) ---\n",
+                    IS_VALID(blk), IS_DIRTY(blk), GET_TAG(blk));
+                if (IS_DIRTY(blk)) {
                     commit_cache(mem, blk, addr);
                 }
             }
+        } else {
+            cerr("but no block found ---\n");
         }
-        cerr("--- response: %c 0x%.4x\n", type, addr);
         bus[3] |= 1 << my_id;
     }
     return TRUE;
@@ -418,6 +434,7 @@ cache_blk_t load_cache(mem_t mem, cache_t cache, word_t pos) {
     // broadcast
     broadcast(mem, 'R', pos);
 
+    cerr("--- load cache at 0x%.4x ---\n", pos);
     // find the block to substitute
     cache_blk_t ret = NULL;
     for (i = 0; i < NUM_BLK; ++i) {
@@ -454,8 +471,11 @@ cache_blk_t find_cache_blk(cache_t cache, word_t pos) {
 
 void commit_cache(mem_t mem, cache_blk_t blk, word_t addr) {
     addr -= ADDR_OFFSET(addr);
-    cerr("... commit memory 0x%.4x\n", addr);
-    memcpy(mem->aux->shared + addr - SHARED_MEM_POS, blk->contents, BLK_SIZE);
+    cerr("--- commit memory 0x%.4x ---\n", addr);
+    if (addr >= SHARED_MEM_POS)
+        memcpy(mem->aux->shared + addr - SHARED_MEM_POS, blk->contents, BLK_SIZE);
+    else
+        memcpy(mem->contents + addr, blk->contents, sizeof(BLK_SIZE));
     UNSET_DIRTY(blk);
 }
 
@@ -471,7 +491,6 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
         return TRUE;
     }
 
-    response(m);
     cache_t c = m->aux->cache;
     cache_blk_t blk = find_cache_blk(c, pos);
 
@@ -481,7 +500,7 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 
     *dest = blk->contents[ADDR_OFFSET(pos)];
 
-    if (cerr_log)
+    if (cerr_log && pos > 0x100)
         cerr("--- get byte val (type: %d, pos: %x, val: %02x) READ %s --- \n", m->aux != 0, pos, *dest, hit ? "HIT" : "MISS");
     return TRUE;
 }
@@ -500,7 +519,8 @@ bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
         return TRUE;
     }
 
-    cerr("--- get word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, *dest);
+    if (pos > 0x100)
+        cerr("--- get word val (type: %d, pos: %x, val: %08x) --- \n", m->aux != 0, pos, *dest);
 
     response(m);
     cerr_log = FALSE;
@@ -540,7 +560,7 @@ bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
     // broadcast
     broadcast(m, 'W', pos);
 
-    cerr("--- write to block 0x%.4x --- \n", pos - ADDR_OFFSET(pos));
+    cerr("--- set block 0x%.4x DIRTY --- \n", pos - ADDR_OFFSET(pos));
     blk->contents[ADDR_OFFSET(pos)] = val;
     SET_DIRTY(blk);
 

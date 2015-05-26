@@ -43,6 +43,7 @@ int main()
             bus[2] = 1;
         }
     }
+    printf("Clients have already exited...\n");
     for (i = 0; i < SHARED_MEM_SIZE; ++i) {
         if (shared[i] != 0) {
             printf("Final 0x%.4x: 0x%.8x\n", i, shared[i]);
