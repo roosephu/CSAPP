@@ -1,6 +1,6 @@
 #include "lock.h"
 
-#define cerr(...) fprintf(stderr, __VA_ARGS__)
+#define cerr(...) ({}) //fprintf(stderr, __VA_ARGS__)
 
 int fd[3], own;
 

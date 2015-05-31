@@ -22,7 +22,7 @@
 #define MAXBUF 1024
 #define DEFAULTNAME "Y86 Simulator: "
 
-#define cerr(...) fprintf(stderr, __VA_ARGS__)
+#define cerr(...) ({}) // fprintf(stderr, __VA_ARGS__)
 
 #ifdef HAS_GUI
 #include <tk.h>

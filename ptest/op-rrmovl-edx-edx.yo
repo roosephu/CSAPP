@@ -1,0 +1,9 @@
+  0x0000:30f200010000  | 	      irmovl $256, %edx
+  0x0006:30f220000000  | 	      irmovl $32, %edx
+  0x000c:10            | 	      nop
+  0x000d:10            | 	      nop
+  0x000e:10            | 	      nop
+  0x000f:2022          | 	      rrmovl %edx,%edx
+  0x0011:10            | 	      nop
+  0x0012:10            | 	      nop
+  0x0013:00            | 	      halt

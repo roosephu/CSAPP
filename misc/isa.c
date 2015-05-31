@@ -209,7 +209,7 @@ mem_t copy_mem(mem_t oldm)
 
 bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile)
 {
-    return TRUE;
+    return FALSE;
     cerr_log = 0;
     word_t pos;
     int len = oldm->len;
@@ -436,8 +436,10 @@ cache_blk_t load_cache(mem_t mem, cache_t cache, word_t pos) {
         if (!IS_VALID(blk))
             ret = blk;
     }
-    if (!ret)
+    if (!ret) {
         ret = &cache->blks[set][rand() % NUM_BLK];
+        commit_cache(mem, ret, GET_TAG(ret) << 7 | i << 4);
+    }
 
     // load memory to this block
     ret->flag = TAG_PACK(1, 0, tag);
