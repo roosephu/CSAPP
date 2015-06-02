@@ -101,10 +101,10 @@ typedef int word_t;
 #define BROADCAST_ADDR(broadcast) ((broadcast) & 0xFFFF)
 
 #define NUM_SET (1 << 3)
-#define NUM_BLK (1 << 3)
+#define NUM_BLK (1 << 4)
 #define BLK_SIZE (1 << 4)
 
-#define SLEEP_USEC 50
+#define SLEEP_USEC 5
 
 typedef struct {
     int flag;

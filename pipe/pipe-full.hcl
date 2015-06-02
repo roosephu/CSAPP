@@ -215,7 +215,7 @@ int d_dstE = [
 
 ## What register should be used as the M destination?
 int d_dstM = [
-	D_icode in { IMRMOVL, IPOPL } : D_rA; # IRMSWAP needn't to be here
+	D_icode in { IMRMOVL, IPOPL, IRMSWAP } : D_rA;
     D_icode == ILEAVE : REBP;
 	1 : RNONE;  # Don't write any register
 ];

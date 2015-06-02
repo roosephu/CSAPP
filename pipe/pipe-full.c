@@ -101,8 +101,8 @@ int gen_d_dstE()
 int gen_d_dstM()
 {
     return (((if_id_curr->icode) == (I_MRMOVL) || (if_id_curr->icode) == 
-        (I_POPL)) ? (if_id_curr->ra) : ((if_id_curr->icode) == (I_LEAVE))
-       ? (REG_EBP) : (REG_NONE));
+        (I_POPL) || (if_id_curr->icode) == (I_RMSWAP)) ? (if_id_curr->ra)
+       : ((if_id_curr->icode) == (I_LEAVE)) ? (REG_EBP) : (REG_NONE));
 }
 
 int gen_d_valA()

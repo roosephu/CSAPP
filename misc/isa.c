@@ -347,6 +347,7 @@ int load_mem(mem_t m, FILE *infile, int report_error)
 }
 
 void init_bus_id(mem_t mem) {
+    srand(time(0));
     lock_init();
     int *bus = (int *)(mem->aux->shared + SHARED_MEM_SIZE);
     if (my_id == -1) {
@@ -433,12 +434,17 @@ cache_blk_t load_cache(mem_t mem, cache_t cache, word_t pos) {
     cache_blk_t ret = NULL;
     for (i = 0; i < NUM_BLK; ++i) {
         cache_blk_t blk = &cache->blks[set][i];
-        if (!IS_VALID(blk))
+        if (!IS_VALID(blk)) {
             ret = blk;
+            break;
+        }
     }
     if (!ret) {
         ret = &cache->blks[set][rand() % NUM_BLK];
-        commit_cache(mem, ret, GET_TAG(ret) << 7 | i << 4);
+        if (IS_DIRTY(ret)) {
+            commit_cache(mem, ret, GET_TAG(ret) << 7 | set << 4);
+            fprintf(stderr, "hw!\n");
+        }
     }
 
     // load memory to this block
@@ -495,10 +501,8 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest) {
     else if (!m->aux) {
         *dest = m->contents[pos];
         return TRUE;
-    } else if (pos >= BUS_MEM_POS) {
-        *dest = m->aux->shared[pos - SHARED_MEM_POS];
-        return TRUE;
     }
+
     lock(m);
     get_byte_val_shared(m, pos, dest);
     unlock();

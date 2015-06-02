@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -ggdb3 -DBIG_MEM
+CFLAGS=-Wall -O2 -DBIG_MEM
 LCFLAGS=-O2
 LEX = flex
 YACC=bison

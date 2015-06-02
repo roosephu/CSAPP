@@ -6,7 +6,7 @@
 
   rmswap %ecx, (%eax)
   nop                      # ecx needs a round to write back
-  irmovl 0x9, %esi
+  irmovl 100, %esi
   irmovl 0x1, %edi
   andl   %ecx, %ecx
   irmovl 0x1, %edx
@@ -76,7 +76,8 @@ L4:
   jmp    L6
 
 L5:
-  addl   %edx, %edx
+#  addl  %edx, %edx
+  iaddl  0x2, %edx
 
 L6:
   rmmovl %edx, (%eax)

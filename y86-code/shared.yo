@@ -6,7 +6,7 @@
                        | 
   0x000c:f01000000000  |   rmswap %ecx, (%eax)
   0x0012:10            |   nop                      # ecx needs a round to write back
-  0x0013:30f609000000  |   irmovl 0x9, %esi
+  0x0013:30f664000000  |   irmovl 100, %esi
   0x0019:30f701000000  |   irmovl 0x1, %edi
   0x001f:6211          |   andl   %ecx, %ecx
   0x0021:30f201000000  |   irmovl 0x1, %edx
@@ -73,23 +73,24 @@
   0x00bd:6266          |   andl   %esi, %esi        # if pid == 0 : *= 2 else += 1
   0x00bf:74cf000000    |   jne    L5
   0x00c4:c0f201000000  |   iaddl  0x1, %edx
-  0x00ca:70d1000000    |   jmp    L6
+  0x00ca:70d5000000    |   jmp    L6
                        | 
   0x00cf:              | L5:
-  0x00cf:6022          |   addl   %edx, %edx
+                       | #  addl  %edx, %edx
+  0x00cf:c0f202000000  |   iaddl  0x2, %edx
                        | 
-  0x00d1:              | L6:
-  0x00d1:402000000000  |   rmmovl %edx, (%eax)
-  0x00d7:30f701000000  |   irmovl 0x1, %edi
-  0x00dd:6171          |   subl   %edi, %ecx
-  0x00df:6211          |   andl   %ecx, %ecx
-  0x00e1:74b1000000    |   jne    L4
+  0x00d5:              | L6:
+  0x00d5:402000000000  |   rmmovl %edx, (%eax)
+  0x00db:30f701000000  |   irmovl 0x1, %edi
+  0x00e1:6171          |   subl   %edi, %ecx
+  0x00e3:6211          |   andl   %ecx, %ecx
+  0x00e5:74b1000000    |   jne    L4
                        | 
-  0x00e6:b06f          |   popl   %esi
-  0x00e8:b07f          |   popl   %edi
-  0x00ea:2054          |   rrmovl %ebp, %esp
-  0x00ec:b05f          |   popl   %ebp
-  0x00ee:90            |   ret
+  0x00ea:b06f          |   popl   %esi
+  0x00ec:b07f          |   popl   %edi
+  0x00ee:2054          |   rrmovl %ebp, %esp
+  0x00f0:b05f          |   popl   %ebp
+  0x00f2:90            |   ret
                        | 
   0x0800:              |   .pos 0x800
   0x0800:              | stack:

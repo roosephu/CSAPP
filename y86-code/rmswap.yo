@@ -1,9 +1,15 @@
                        | # Execution begins at address 0
   0x0000:              | 	.pos 0
-  0x0000:30f000400000  |   irmovl 0x4000, %eax
-  0x0006:30f3afbeadde  |   irmovl 0xDEADBEAF, %ebx
-  0x000c:30f100020000  |   irmovl 0x200, %ecx
-  0x0012:403000000000  |   rmmovl %ebx, (%eax)
+  0x0000:30f000100000  |   irmovl 0x1000, %eax
+                       | #  irmovl 0xDEADBEAF, %ebx
+  0x0006:30f100020000  |   irmovl 0x200, %ecx
+  0x000c:10            |   nop
+  0x000d:10            |   nop
+                       | 
+                       | #  rmmovl %ebx, (%eax)
                        | #  irmovl 0x12345678, %ebx
                        | #  rmmovl %ebx, 4(%eax)
-  0x0018:f01000000000  |   rmswap %ecx, (%eax)
+                       | #  rmswap %ecx, (%eax)
+  0x000e:10            |   nop
+  0x000f:10            |   nop
+  0x0010:10            |   nop

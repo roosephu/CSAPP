@@ -1,9 +1,15 @@
 # Execution begins at address 0
 	.pos 0
-  irmovl 0x4000, %eax
-  irmovl 0xDEADBEAF, %ebx
+  irmovl 0x1000, %eax
+#  irmovl 0xDEADBEAF, %ebx
   irmovl 0x200, %ecx
-  rmmovl %ebx, (%eax)
+  nop
+  nop
+
+#  rmmovl %ebx, (%eax)
 #  irmovl 0x12345678, %ebx
 #  rmmovl %ebx, 4(%eax)
-  rmswap %ecx, (%eax)
+#  rmswap %ecx, (%eax)
+  nop
+  nop
+  nop

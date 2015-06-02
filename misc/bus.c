@@ -26,7 +26,7 @@ int main()
     int *bus = (int *)(shared + SHARED_MEM_SIZE);
 
     int clients = 2;
-    printf("Waiting for %d client(s)...\n", 2);
+    printf("Waiting for %d client(s)...\n", clients);
     for (; bus[0] != clients; )
         usleep(50);
 
@@ -37,7 +37,7 @@ int main()
     for ( ; bus[4] != (mask << 1); usleep(33)) {
         int broadcast = bus[1];
         if (BROADCAST_TYPE(broadcast) != 0) {
-            printf("Find a broadcast...0x%.8x\n", broadcast);
+            // printf("Find a broadcast...0x%.8x\n", broadcast);
             for ( ; (bus[3] | bus[4]) != (mask << 1); )
                 usleep(3);
             bus[1] = 0;
