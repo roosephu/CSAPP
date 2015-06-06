@@ -52,8 +52,8 @@ The `reponse` is that:
 ### how to open a shared memory
 
 ```c
-int fd = open(SHARED_FILE, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-byte_t shared_ptr = mmap(NULL, TOTAL_SHM_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FILE, fd, 0);
+int fd = open("file here", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+byte_t *shared_ptr = mmap(NULL, the size of shared memory here, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FILE, fd, 0);
 ```
 
 ### how to acquire/release lock
