@@ -405,13 +405,11 @@ bool_t response(mem_t mem) {
         if (blk != NULL) {
             cerr("and check flag (V: %x, D: %x, T: %.3x) ---\n",
                 IS_VALID(blk), IS_DIRTY(blk), GET_TAG(blk));
+            if (IS_DIRTY(blk))
+                commit_cache(mem, blk, addr);
             if (type == 'W') {
                 cerr("--- invalidate block ---\n");
                 SET_INVALID(blk);
-            } else if (type == 'R')  {
-                if (IS_DIRTY(blk)) {
-                    commit_cache(mem, blk, addr);
-                }
             }
         } else {
             cerr("but no block found ---\n");
