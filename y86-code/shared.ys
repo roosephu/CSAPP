@@ -76,8 +76,8 @@ L4:
   jmp    L6
 
 L5:
-#  addl  %edx, %edx
-  iaddl  0x2, %edx
+  addl  %edx, %edx
+#  iaddl  0x2, %edx
 
 L6:
   rmmovl %edx, (%eax)
